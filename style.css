@@ -61,6 +61,7 @@ body{
 
 
 
+
 #all #IDENTIFICACAO_RAPIDA section{
     flex-direction: row;
     justify-content: center;
@@ -118,6 +119,10 @@ body{
     margin: 1vw;
 }
 
+#all #IDENTIFICACAO_RAPIDA .IQb *{
+    color: black;
+}
+
 #all #IDENTIFICACAO_RAPIDA .br{
     height: 3vw;
 }
@@ -136,10 +141,18 @@ body{
     background-color: #8092a1;
 }
 
+#all #IDENTIFICACAO_RAPIDA .organizacao .cartaow .IQb *{
+    display: none;
+}
+
+
+
 #all #IDENTIFICACAO_RAPIDA .class div{
-    background-color: #ffffff00;
-    border: 1px solid #ff000000;
+    background-color: #ff080800;
+    border: 1px solid #00000000;
     width: 0px;
+    font-size: 0px;
+    height: 0px;
 }
 
 #all #IDENTIFICACAO_RAPIDA .organizacao .cartao .nomeCartao,
@@ -157,6 +170,8 @@ body{
 #all #IDENTIFICACAO_RAPIDA .organizacao .cartaow .nomeCartao input{
     display: none;
 }
+
+
 
 
 

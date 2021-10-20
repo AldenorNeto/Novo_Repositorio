@@ -106,7 +106,6 @@
 
 #all #temposDeCiclo .IQb .estado{
     height: 100%;
-
     padding: 0px;
     margin: 0px;
     border: 0px;
@@ -173,6 +172,32 @@
 #all #temposDeCiclo .organizacao .cartaow .nomeCartao input + label{
     color: #fff;
 }
+
+#all #temposDeCiclo .gg-search {
+    box-sizing: border-box;
+    position: relative;
+    display: block;
+    transform: scale(var(--ggs,1));
+    width: 12px;
+    height: 12px;
+    border: 2px solid;
+    border-radius: 100%;
+    margin-right: 3px;
+}
+#all #temposDeCiclo .gg-search::after {
+    content: "";
+    display: block;
+    box-sizing: border-box;
+    position: absolute;
+    border-radius: 3px;
+    width: 2px;
+    height: 8px;
+    background: currentColor;
+    transform: rotate(-45deg);
+    top: 7px;
+    left: 9px
+}
+
 
 /*@media only screen and (min-width: 1300px) {
     #all #temposDeCiclo .organizacao{
