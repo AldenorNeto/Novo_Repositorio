@@ -43,200 +43,215 @@ $(document).ready(() => {
                 }
             }
         //})
-        
     }
+
+    var preencheArraycomZeros = (array,quantidade) => {
+        for(let n = 0; n < quantidade; n++){
+            array.push(0)
+        }
+    }
+
+    
+
+
 
     var todosIDs = []
-    /*var tagNomes = () => {
-        var tag
-        var wrd
-        let texto
-        for(let n = 0; n < 20; n++){
-            texto = $(".wrd:eq(" + n +")").next().text()
-            if(texto){
-                tag = ($(".wrd:eq(" + n +")").next().next().attr("id")) 
-                todosIDs.push(wrd)
-            }
-            else{
-                $(".wrd:eq(" + n +")").parent().removeClass().addClass('class')
-            }
-        }
-        for(let n = 0; n < 500; n++){
-            texto = $(".tag:eq(" + n +")").next().text()
-            if(texto){
-                tag = ($(".tag:eq(" + n +")").next().next().attr("id")) 
-                todosIDs.push(tag)
-            }
-            else{
-                $(".tag:eq(" + n +")").parent().removeClass().addClass('class')
-            }
-        }
-    }
-
-    tagNomes();*/
-
-    
+    var _todosIDs = id => "#" + todosIDs[id]
+    var todosWrd = []
+    var _todosWrd = id => "#" + todosWrd[id]
     
     var invalidaVariveisVazias = valorClass => {
-        let tag
-        let texto
-        var _valorClassEQ = id => {return $("."+valorClass+":eq(" + id +")")}
+        var tag, texto
+        var _valorClassEQ = id => $("."+valorClass+":eq(" + id +")")
         var numerosDeElementoDaClass = $("."+valorClass).length
         for(let n = 0; n < numerosDeElementoDaClass; n++){
             texto = _valorClassEQ(n).next().text()
             if(texto){
-                if(valorClass == "tag"){
-                    tag = _valorClassEQ(n).next().next().attr("id")
-                    todosIDs.push(tag)
-                }
+                tag = _valorClassEQ(n).next().next().attr("id")
+                valorClass == "tag" ? todosIDs.push(tag) : todosWrd.push(tag)
             }
             else{
-                _valorClassEQ(n).parent().removeClass().addClass('class')
+                setTimeout(()=>adicionaClasseAosCartoes(_valorClassEQ(n),'class'),2)
+                
             }
         } 
     }
     invalidaVariveisVazias("tag")
     invalidaVariveisVazias("wrd")
-    
-    var _todosIDs = id => {return "#" + todosIDs[id]}
+    var adicionaClasseAosCartoes = (address,classe) => address.parent().removeClass().addClass(classe) 
+
     var quantidadesDeIO = todosIDs.length      //127 ou 200
 
     var entradasESaidasConcatenadas = []
+    preencheArraycomZeros(entradasESaidasConcatenadas,quantidadesDeIO)
     var tempoEmON = []
-    pose = 0
-    for(let n = 0; n < quantidadesDeIO; n++){
-        tempoEmON.push(0)
-        entradasESaidasConcatenadas.push(0)
-    }
+    preencheArraycomZeros(tempoEmON,quantidadesDeIO)
+
+    var SensCilGiraMesaAvancado
+
+    var backgroundcolor = (address,cor) =>  $(address).css('background-color',cor)
 
 
-    var todosIDsPassado
-    var cartaoMin = 0
-    var cartaoMax = 14
 
-    var variaveisEstado = () => {
-        pose++
+
+    const somaMaisUmSeVariavelDentro = () => {
         for(let n = 0; n < quantidadesDeIO; n++){
             if(entradasESaidasConcatenadas[n]){
                 tempoEmON[n]++
             }  
         }
+    }
+    
+    
 
-        if(moduloDeMonutoramento == "IDENTIFICACAO_RAPIDA"){
+    var pintaIdentificacaoRapida = () => {
+        
             for(let n = 0; n < quantidadesDeIO; n++){
-                if(entradasESaidasConcatenadas[n]){
-                    $(_todosIDs(n)).css('background-color','#00ff00')
-                }else{  
-                    $(_todosIDs(n)).css('background-color','#dbdbdb')
-                } 
+                entradasESaidasConcatenadas[n] ? backgroundcolor(_todosIDs(n),'#00ff00') : backgroundcolor(_todosIDs(n),'#dbdbdb')
                 mostraTempo($(_todosIDs(n)),n)
             }
-        }
-
-
-        i++
-        if(moduloDeMonutoramento == "temposDeCiclo" && i > 0){ // PREENCHE A BARRA DE TRACE DA VARIAVEL n
-            i=0
-            $("input[type='radio']").change(() => {
-                identificaCartao($("input[type='radio']:checked").val())
-                for(let n = cartaoMin; n < cartaoMax; n++){
-                    $(_todosIDs(n) + "  div").remove()
-                }
-            })
-
-            for(let n = cartaoMin; n < cartaoMax; n++){
-                $(_todosIDs(n)).append("<div class='estado'></div>") 
-                    if(entradasESaidasConcatenadas[n]){
-                        $(_todosIDs(n) + " div:last-child").css('background-color','#00ff00')
-                    }
-                    else{
-                        $(_todosIDs(n) + " div:last-child").css('background-color','#e2e2e2')
-                    }
-                if($(_todosIDs(n)).children().length >= 300){
-                    $(_todosIDs(n) + "  div:eq(0)").remove()
-                }
-                
-            }
-        }
-
-
         
-        if((todosIDsPassado == 0) && (entradasESaidasConcatenadas[1] == 1)){ // ATUALIZA CONTADOR DE VARIAVEL DENTRO A CADA CICLO
-            pose = 0
-            for(let n = 0; n < quantidadesDeIO ; n++){
-                if(moduloDeMonutoramento == "temposDeCiclo"){
-                    mostraTempo($(_todosIDs(n)).parent().find(".tempoFinal"),n)
-                }
-                tempoEmON[n] = 0
+    }
+    
+    
+
+
+    const trocaAsBarrasAoTrocarOCartao = () => {
+            tamanhoCartao = identificaCartao($(".lupa:checked").val())
+            for(let n = tamanhoCartao.min; n < tamanhoCartao.max; n++){
+                $(_todosIDs(n) + " div").remove()
+            }
+            return tamanhoCartao
+    }
+    
+    var preencheBarraTemposDeCiclo = (tamanhoCartao) => {
+        for(let n = tamanhoCartao.min; n < tamanhoCartao.max; n++){
+            $(_todosIDs(n)).append("<div class='estado'></div>");
+            entradasESaidasConcatenadas[n] ? backgroundcolor(_todosIDs(n) + " div:last-child",'#00ff00') : backgroundcolor(_todosIDs(n) + " div:last-child",'#dbdbdb')
+            if($(_todosIDs(n)).children().length >= 300){
+                $(_todosIDs(n) + " div:eq(0)").remove();
             }
         }
-        todosIDsPassado = entradasESaidasConcatenadas[1]
     }
 
-    var i = 0
+     
+            
 
-    setInterval(variaveisEstado, 10);
 
-    var cpuSelecionado = 0
+            //>>>>>$(".tamanho").css('height',parseInt(Math.random()*250)+'px')<<<<
 
-    if(cpuSelecionado){
-        setInterval(() => ajaxValues("http://10.2.65.150/awp/index.html"), 1100)
-    }else{
-        setInterval(() => ajaxValues("http://10.2.65.150/awp/index.html"), 1100)
+
+
+
+
+        const resetaCiclo = () =>{
+            if((SensCilGiraMesaAvancado == 0) && (entradasESaidasConcatenadas[1] == 1)){ // ATUALIZA CONTADOR DE VARIAVEL DENTRO A CADA CICLO
+                for(let n = 0; n < quantidadesDeIO ; n++){
+                    if(moduloDeMonutoramento == "temposDeCiclo"){
+                        mostraTempo($(_todosIDs(n)).parent().find(".tempoFinal"),n)  // ATUALIZA CONTADOR EM TEMPOS DE CICLO QUANDO O CICLO ACABA
+                    }
+                    tempoEmON[n] = 0
+                }
+            }
+            SensCilGiraMesaAvancado = entradasESaidasConcatenadas[1]
+        }
+        
+    
+
+    
+
+    
+
+    var mudaDePagDevice = () => {
+        const addresToDevice = "http://10.2.65.150/awp/"
+        const AbreviaAjax = index => setInterval(() => ajaxValues(addresToDevice + index), 1100)
+        const replacePagDevice = (Device, cpuBool) => {
+            window.location.replace(addresToDevice + Device + ".html")
+            return cpuBool
+        }
+        replacePagDevice ? AbreviaAjax("index.html") : console.log(56663);
+        $("#device").change(() => {
+            $("#device option:selected").val() == "CPU" ? replacePagDevice("injetore",0) : replacePagDevice("remota",1)
+        })
+    
     }
-    $("#device").change(() => {
-        if(($("#device option:selected").val() == "CPU")){
-            window.location.replace("http://10.2.65.150/awp/injetore.html")
-            cpuSelecionado = 0
+
+
+    $("#device").change(mudaDePagDevice())
+
+
+    const MainIdentificacaoRapida = () => {
+        $(".IDEN").attr('id','IDENTIFICACAO_RAPIDA')
+        moduloDeMonutoramento = "IDENTIFICACAO_RAPIDA"
+        
+        for(let n = 0; n < quantidadesDeIO; n++){
+            $(".tempoFinal").remove()
+            $(_todosIDs(n)).text("")  
         }
-        if(($("#device option:selected").val() == "REMOTA")){
-            window.location.replace("http://10.2.65.150/awp/remota.html")
-            cpuSelecionado = 1
-        }
-    })
+
+        setInterval(() => {
+            if($("#exibicao option:selected").val() == "IDENTIFICACAO_RAPIDA"){
+                
+                somaMaisUmSeVariavelDentro()
+                pintaIdentificacaoRapida()
+            }
+        },10)
+
+        setInterval(resetaCiclo);
+    }
 
 
     var moduloDeMonutoramento = "IDENTIFICACAO_RAPIDA"
+    MainIdentificacaoRapida()
+
 
     $("#exibicao").change(() => {
 
         if(($("#exibicao option:selected").val() == "IDENTIFICACAO_RAPIDA")){
-            $(".IDEN").attr('id','IDENTIFICACAO_RAPIDA')
-            moduloDeMonutoramento = "IDENTIFICACAO_RAPIDA"
-            for(let n = 0; n < quantidadesDeIO; n++){
-                $(".tempoFinal").remove()
-                $(_todosIDs(n)).text("")  
-            }
+            MainIdentificacaoRapida()
         }
 
         if(($("#exibicao option:selected").val() == "temposDeCiclo")){
+
             $(".IDEN").attr('id','temposDeCiclo')
+
             moduloDeMonutoramento = "temposDeCiclo"
+
             for(let n = 0; n < quantidadesDeIO; n++){
-                
                 $(_todosIDs(n)).parent().append("<div class='tempoFinal'>0.0s</div>")
                 $(_todosIDs(n)).text("")
-                $(_todosIDs(n)).css('background-color','#e2e2e2')
+                backgroundcolor(_todosIDs(n),'#e2e2e2')
             }
+
+            var tamanhoCartao = identificaCartao($(".lupa:checked").val())
+            $(".lupa").change(() => {if($("#exibicao option:selected").val() == "temposDeCiclo"){tamanhoCartao = trocaAsBarrasAoTrocarOCartao()}})
+            setInterval(() => {if($("#exibicao option:selected").val() == "temposDeCiclo"){preencheBarraTemposDeCiclo(tamanhoCartao)}});
+
+            setInterval(resetaCiclo);
+
+
+
         }
 
     })
 
 
     var identificaCartao = cart => {
-        cart == "c2" ? (cartaoMin = 0, cartaoMax = 14) : cart == "c3" ? (cartaoMin = 14, cartaoMax = 30) : cart == "c4" ? (cartaoMin = 30, cartaoMax = 37) : cart == "c5"
-        cart == "c5" ? (cartaoMin = 37, cartaoMax = 43) : cart == "c6" ? (cartaoMin = 43, cartaoMax = 51) : cart == "c7" ? (cartaoMin = 51, cartaoMax = 67) : cart == "c8"
-        cart == "c8" ? (cartaoMin = 67, cartaoMax = 83) : cart == "c9" ? (cartaoMin = 83, cartaoMax = 99) : cart == "c14" ? (cartaoMin = 100, cartaoMax = 107) : cart == "c15"
-        cart == "c15" ? (cartaoMin = 107, cartaoMax = 115) : cart == "c16" ? (cartaoMin = 115, cartaoMax = 119) : cart == "c17" ? (cartaoMin = 119, cartaoMax = 123) : cart == "c18"
-        cart == "c18" ? (cartaoMin = 123, cartaoMax = 127) : (cartaoMin = 0, cartaoMax = 0)
+        var  min, max
+        cart === undefined ? cart = "c2" : cart = cart
+        var ternario = (cartao,mi,ma) => {if(cart == cartao) {min=mi, max=ma}}
+        ternario("c2",0,14);
+        ternario("c3",14,30);
+        ternario("c4",30,37);
+        ternario("c5",37,43);
+        ternario("c6",43,51);
+        ternario("c7",51,67);
+        return {min, max}
     }
 
-    var mostraTempo = (local,n) => {
-            var dezena = tempoEmON[n] / 10
-            var unidade = tempoEmON[n] - (parseInt(dezena)*10)
-            local.text(parseInt(dezena) + "." + unidade + "s") 
+    var mostraTempo = (local,IO) => {
+            var dezena = tempoEmON[IO] /100
+            local.text(dezena.toFixed(1) + " s") 
     }
-
-
 
 })
