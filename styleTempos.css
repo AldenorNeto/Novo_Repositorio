@@ -28,10 +28,18 @@
     justify-content: space-between;
 }
 
-#all #temposDeCiclo .organizacao .cartaow .IW .IQb .escala,
-#all #temposDeCiclo .organizacao .cartaow .QW .IQb .escala{
-    margin: -2px 0px;
+#all #temposDeCiclo .organizacao .cartaow .IQb .escala{
+    position: absolute;
+    width: fit-content;
+    margin-bottom: -1px;
+    margin-left:-68px ;
     color: black;
+
+}
+
+#all #temposDeCiclo .organizacao .cartaow .IQb .escala + .escala{
+    margin-bottom:170px;
+    margin-left:-52px ;
 }
 
 #all #temposDeCiclo section{
@@ -173,6 +181,11 @@
     color: #fff;
 }
 
+#all #temposDeCiclo div .nomeCartao label{
+    padding: 7px 14px;
+    margin: -5px -10px;
+} 
+
 #all #temposDeCiclo .gg-search {
     box-sizing: border-box;
     position: relative;
@@ -196,6 +209,13 @@
     transform: rotate(-45deg);
     top: 7px;
     left: 9px
+}
+
+#all #temposDeCiclo .organizacao .cartaow .IQb .tamanho{
+    background-color: rgba(9, 255, 0, 0.671);
+    width: 100%;
+    margin: 0px;
+    border: none;
 }
 
 

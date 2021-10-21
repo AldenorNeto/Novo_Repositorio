@@ -47,6 +47,8 @@ $(document).ready(() => {
     }
 
     var todosIDs = []
+    var todosWrd = []
+
     /*var tagNomes = () => {
         var tag
         var wrd
@@ -79,8 +81,9 @@ $(document).ready(() => {
     
     var invalidaVariveisVazias = valorClass => {
         let tag
+        let wrd
         let texto
-        var _valorClassEQ = id => {return $("."+valorClass+":eq(" + id +")")}
+        var _valorClassEQ = id => $("."+valorClass+":eq(" + id +")")
         var numerosDeElementoDaClass = $("."+valorClass).length
         for(let n = 0; n < numerosDeElementoDaClass; n++){
             texto = _valorClassEQ(n).next().text()
@@ -88,6 +91,10 @@ $(document).ready(() => {
                 if(valorClass == "tag"){
                     tag = _valorClassEQ(n).next().next().attr("id")
                     todosIDs.push(tag)
+                }
+                if(valorClass == "wrd"){
+                    wrd = _valorClassEQ(n).next().next().attr("id")
+                    todosWrd.push(wrd)
                 }
             }
             else{
@@ -98,24 +105,32 @@ $(document).ready(() => {
     invalidaVariveisVazias("tag")
     invalidaVariveisVazias("wrd")
     
-    var _todosIDs = id => {return "#" + todosIDs[id]}
+
+
+    var _todosIDs = id => "#" + todosIDs[id]
+    var _todosWrd = id => "#" + todosWrd[id]
+    console.log(todosIDs);
+    console.log(todosWrd);
+
+
     var quantidadesDeIO = todosIDs.length      //127 ou 200
 
     var entradasESaidasConcatenadas = []
     var tempoEmON = []
-    pose = 0
+
     for(let n = 0; n < quantidadesDeIO; n++){
         tempoEmON.push(0)
         entradasESaidasConcatenadas.push(0)
     }
 
 
-    var todosIDsPassado
+    var SensCilGiraMesaAvancado
     var cartaoMin = 0
     var cartaoMax = 14
 
+
     var variaveisEstado = () => {
-        pose++
+
         for(let n = 0; n < quantidadesDeIO; n++){
             if(entradasESaidasConcatenadas[n]){
                 tempoEmON[n]++
@@ -134,48 +149,50 @@ $(document).ready(() => {
         }
 
 
-        i++
-        if(moduloDeMonutoramento == "temposDeCiclo" && i > 0){ // PREENCHE A BARRA DE TRACE DA VARIAVEL n
-            i=0
+        if(moduloDeMonutoramento == "temposDeCiclo"){ // PREENCHE A BARRA DE TRACE DA VARIAVEL n
+
             $("input[type='radio']").change(() => {
                 identificaCartao($("input[type='radio']:checked").val())
                 for(let n = cartaoMin; n < cartaoMax; n++){
-                    $(_todosIDs(n) + "  div").remove()
+                    $(_todosIDs(n) + " div").remove()
                 }
             })
 
             for(let n = cartaoMin; n < cartaoMax; n++){
-                $(_todosIDs(n)).append("<div class='estado'></div>") 
+                $(_todosIDs(n)).append("<div class='estado'></div>");
                     if(entradasESaidasConcatenadas[n]){
-                        $(_todosIDs(n) + " div:last-child").css('background-color','#00ff00')
+                        $(_todosIDs(n) + " div:last-child").css('background-color','#00ff00');
                     }
                     else{
-                        $(_todosIDs(n) + " div:last-child").css('background-color','#e2e2e2')
+                        $(_todosIDs(n) + " div:last-child").css('background-color','#e2e2e2');
                     }
                 if($(_todosIDs(n)).children().length >= 300){
-                    $(_todosIDs(n) + "  div:eq(0)").remove()
+                    $(_todosIDs(n) + " div:eq(0)").remove();
                 }
-                
             }
+console.log("hhhhh");
+
+            $(".tamanho").css('height',parseInt(Math.random()*250)+'px')
+
+
         }
 
 
         
-        if((todosIDsPassado == 0) && (entradasESaidasConcatenadas[1] == 1)){ // ATUALIZA CONTADOR DE VARIAVEL DENTRO A CADA CICLO
-            pose = 0
+        if((SensCilGiraMesaAvancado == 0) && (entradasESaidasConcatenadas[1] == 1)){ // ATUALIZA CONTADOR DE VARIAVEL DENTRO A CADA CICLO
             for(let n = 0; n < quantidadesDeIO ; n++){
                 if(moduloDeMonutoramento == "temposDeCiclo"){
-                    mostraTempo($(_todosIDs(n)).parent().find(".tempoFinal"),n)
+                    mostraTempo($(_todosIDs(n)).parent().find(".tempoFinal"),n)  // ATUALIZA CONTADOR EM TEMPOS DE CICLO QUANDO O CICLO ACABA
                 }
                 tempoEmON[n] = 0
             }
         }
-        todosIDsPassado = entradasESaidasConcatenadas[1]
+        SensCilGiraMesaAvancado = entradasESaidasConcatenadas[1]
     }
 
     var i = 0
 
-    setInterval(variaveisEstado, 10);
+    setInterval(variaveisEstado);
 
     var cpuSelecionado = 0
 
@@ -213,11 +230,11 @@ $(document).ready(() => {
             $(".IDEN").attr('id','temposDeCiclo')
             moduloDeMonutoramento = "temposDeCiclo"
             for(let n = 0; n < quantidadesDeIO; n++){
-                
                 $(_todosIDs(n)).parent().append("<div class='tempoFinal'>0.0s</div>")
                 $(_todosIDs(n)).text("")
                 $(_todosIDs(n)).css('background-color','#e2e2e2')
             }
+
         }
 
     })
@@ -228,13 +245,14 @@ $(document).ready(() => {
         cart == "c5" ? (cartaoMin = 37, cartaoMax = 43) : cart == "c6" ? (cartaoMin = 43, cartaoMax = 51) : cart == "c7" ? (cartaoMin = 51, cartaoMax = 67) : cart == "c8"
         cart == "c8" ? (cartaoMin = 67, cartaoMax = 83) : cart == "c9" ? (cartaoMin = 83, cartaoMax = 99) : cart == "c14" ? (cartaoMin = 100, cartaoMax = 107) : cart == "c15"
         cart == "c15" ? (cartaoMin = 107, cartaoMax = 115) : cart == "c16" ? (cartaoMin = 115, cartaoMax = 119) : cart == "c17" ? (cartaoMin = 119, cartaoMax = 123) : cart == "c18"
-        cart == "c18" ? (cartaoMin = 123, cartaoMax = 127) : (cartaoMin = 0, cartaoMax = 0)
+        if (cart == "c18") {(cartaoMin = 123, cartaoMax = 127)}
+
+        if(cart == "c10") {(cartaoMin = 0, cartaoMax = 4)}
     }
 
-    var mostraTempo = (local,n) => {
-            var dezena = tempoEmON[n] / 10
-            var unidade = tempoEmON[n] - (parseInt(dezena)*10)
-            local.text(parseInt(dezena) + "." + unidade + "s") 
+    var mostraTempo = (local,IO) => {
+            var dezena = tempoEmON[IO] /100
+            local.text(dezena.toFixed(1) + " s") 
     }
 
 
