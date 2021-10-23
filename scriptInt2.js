@@ -11,10 +11,8 @@ setTimeout(() => {
                 
 
                 fruta[parseInt(Math.random()*10)] = parseInt(Math.random()*10) + ''
-                arr[0] = fruta.join('')
-                arr[1] = fruta.join('')
-                arr[2] = fruta.join('')
-                arr[3] = fruta.join('')
+                arr = [fruta.join(''),fruta.join(''),fruta.join(''),fruta.join('')]
+
 
 
 
