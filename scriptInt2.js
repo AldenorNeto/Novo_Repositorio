@@ -15,23 +15,14 @@ setTimeout(() => {
 
 
 
-
+                
             var quantidadeUDInt = arr.length        //4 ou 6
             var arrayArmazenaEmBool = []
             for(let n = 0; n < quantidadeUDInt; n++){
                 arrayArmazenaEmBool.push(parseInt(arr[n]).toString(2))        //['1010100110101', '110100010', '101011110010', '10110']
+                arrayArmazenaEmBool[n] = Array.from(arrayArmazenaEmBool[n],Math.abs).reverse().concat(Array(32 - arrayArmazenaEmBool[n].length).fill(0))
             }
 
-            for (var UDInt10dig = 0; UDInt10dig < quantidadeUDInt; UDInt10dig++) {
-                arrayArmazenaEmBool[UDInt10dig] = (arrayArmazenaEmBool[UDInt10dig]).split('');     //[['1','0','1','0','1','0','0','1','1'...
-                for (var x = 0; x < arrayArmazenaEmBool[UDInt10dig].length; x++) {
-                    arrayArmazenaEmBool[UDInt10dig][x] = parseInt(arrayArmazenaEmBool[UDInt10dig][x])      //[[1,0,1,0,1,0,0,1,1,0,1,0,1], ...
-                }
-                while(arrayArmazenaEmBool[UDInt10dig].length < 32){
-                    arrayArmazenaEmBool[UDInt10dig].unshift(0);          //[[0,0,0,0,0,1,0,1,0,1,0,0,1,1,0,1,0,1], [0,0,0,0,1,1,0,1,0,1...
-                }
-                arrayArmazenaEmBool[UDInt10dig].reverse()          //[[1,0,1,1,0,0,1,0,1,0,1,0,0,0,0,0], [1,0,1,1,0,1...
-            }
 
             var i = 0
             for(let n = 0; n < quantidadeUDInt; n++){
