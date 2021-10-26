@@ -50,8 +50,8 @@ setTimeout(() => {
 
     var adicionaClasseAosCartoes = (address,classe) => address.parent().removeClass().addClass(classe) 
 
-    var entradasESaidasConcatenadas = Array(todosIDs.length).fill(0)//preencheArraycomZeros(todosIDs.length)
-    var tempoEmON = Array(todosIDs.length).fill(0)//preencheArraycomZeros(todosIDs.length)
+    var entradasESaidasConcatenadas = Array(200).fill(0)//preencheArraycomZeros(todosIDs.length)
+    var tempoEmON = Array(350).fill(0)//preencheArraycomZeros(todosIDs.length)
 
     var backgroundcolor = (address,cor) => $(address).css('background-color',cor)
 
@@ -136,8 +136,8 @@ setTimeout(() => {
     const MainIdentificacaoRapida = () => {
         $(".IDEN").attr('id','IDENTIFICACAO_RAPIDA')
         moduloDeMonutoramento = "IDENTIFICACAO_RAPIDA"
-        var todosIDs = invalidaVariveisVazias("tag")
-        var todosWrd = invalidaVariveisVazias("wrd")
+        todosIDs = invalidaVariveisVazias("tag")
+        todosWrd = invalidaVariveisVazias("wrd")
         
         for(let n = 0; n < todosIDs.length; n++){
             $(".tempoFinal").remove()
