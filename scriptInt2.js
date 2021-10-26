@@ -1,6 +1,7 @@
 setTimeout(() => {
     
     var fruta = ['3', '2', '2', '7', '9', '0', '6', '2', '5', '8']
+    setInterval(()=>fruta[parseInt((Math.random()*9)+1)] = parseInt(Math.random()*5) + '',1000)
     var entradaAnalogica = [55,77,99,33,11]
     const ajaxValues = link => {
         
@@ -10,10 +11,9 @@ setTimeout(() => {
             arr = arr[0].split(' ');          //['xxxxxxxxxxx', 'xxxxxxxx', 'xxxxxxxxxx', 'xxxxx']
                 
 
-                fruta[parseInt((Math.random()*9)+1)] = parseInt(Math.random()*5) + ''
                 arr = [fruta.join(''),fruta.join(''),fruta.join(''),'9226109']
 
-
+            
             var quantidadeUDInt = arr.length        //4 ou 6
             var arrayArmazenaEmBool = []
             for(let n = 0; n < quantidadeUDInt; n++){
@@ -27,12 +27,11 @@ setTimeout(() => {
 
     var todosIDs = []
     var todosWrd = []
-    var _todosIDs = id => "#" + todosIDs[id]
-    var _todosWrd = id => "#" + todosWrd[id]
+    const _todosIDs = id => "#" + todosIDs[id]
+    const _todosWrd = id => "#" + todosWrd[id]
     
-    var invalidaVariveisVazias = valorClass => {
-        var tag, texto
-        var array = []
+    const invalidaVariveisVazias = valorClass => {
+        var tag, texto, array = []
         var _valorClassEQ = id => $("."+valorClass+":eq(" + id +")")
         var numerosDeElementoDaClass = $("."+valorClass).length
         for(let n = 0; n < numerosDeElementoDaClass; n++){
@@ -48,26 +47,23 @@ setTimeout(() => {
         return array
     }
 
-    var adicionaClasseAosCartoes = (address,classe) => address.parent().removeClass().addClass(classe) 
+    const adicionaClasseAosCartoes = (address,classe) => address.parent().removeClass().addClass(classe) 
 
+    const backgroundcolor = (address,cor) => $(address).css('background-color',cor)
 
-    var tempoEmON = Array(350).fill(0)//preencheArraycomZeros(todosIDs.length)
-
-    var backgroundcolor = (address,cor) => $(address).css('background-color',cor)
-
-    const somaMaisUmSeVariavelDentro = (arrayArmazenaTema) => {
+    const somaMaisUmSeVariavelDentro = (arrayArmazenaTemp,arrayDeReferencia) => {
         for(let n = 0; n < todosIDs.length; n++){
-            if(entradasESaidasConcatenadas[n]){
-                arrayArmazenaTema[n]++
+            if(arrayDeReferencia[n]){
+                arrayArmazenaTemp[n]++
             }  
         }
-        return arrayArmazenaTema
+        return arrayArmazenaTemp
     }
 
-    var pintaIdentificacaoRapida = () => {
+    const pintaIdentificacaoRapida = (VariveisQueSeramPintadas,tempoEmON) => {
         for(let n = 0; n < todosIDs.length; n++){
-            entradasESaidasConcatenadas[n] ? backgroundcolor(_todosIDs(n),'#00ff00') : backgroundcolor(_todosIDs(n),'#dbdbdb')
-            mostraTempo($(_todosIDs(n)),n)
+            VariveisQueSeramPintadas[n] ? backgroundcolor(_todosIDs(n),'#00ff00') : backgroundcolor(_todosIDs(n),'#dbdbdb')
+            mostraTempo($(_todosIDs(n)),tempoEmON[n])
         }
     }
     
@@ -79,10 +75,10 @@ setTimeout(() => {
         return tamanhoCartao
     }
     
-    var preencheBarraTemposDeCiclo = (tamanhoCartao) => {
+    const preencheBarraTemposDeCiclo = (tamanhoCartao,veriaveisEmTrueAtualmente) => {
         for(let n = tamanhoCartao.min; n < tamanhoCartao.max; n++){
             $(_todosIDs(n)).append("<div class='estado'></div>");
-            entradasESaidasConcatenadas[n] ? backgroundcolor(_todosIDs(n) + " div:last-child",'#00ff00') : backgroundcolor(_todosIDs(n) + " div:last-child",'#dbdbdb')
+            veriaveisEmTrueAtualmente[n] ? backgroundcolor(_todosIDs(n) + " div:last-child",'#00ff00') : backgroundcolor(_todosIDs(n) + " div:last-child",'#dbdbdb')
             if($(_todosIDs(n)).children().length >= 300){
                 $(_todosIDs(n) + " div:eq(0)").remove();
             }
@@ -90,22 +86,23 @@ setTimeout(() => {
     }
             //>>>>>$(".tamanho").css('height',parseInt(Math.random()*250)+'px')<<<<
 
-    const resetaCiclo = (ArmazenaBorda) =>{
-        if((ArmazenaBorda == 0) && (entradasESaidasConcatenadas[1] == 1)){ // ATUALIZA CONTADOR DE VARIAVEL DENTRO A CADA CICLO
+    const resetaCiclo = (memorizaBorda,variavelReferencia) =>{
+        if((memorizaBorda == 0) && (variavelReferencia == 1)){ // ATUALIZA CONTADOR DE VARIAVEL DENTRO A CADA CICLO
+            console.log(8787);
             for(let n = 0; n < todosIDs.length ; n++){
                 if(moduloDeMonutoramento == "temposDeCiclo"){
-                    mostraTempo($(_todosIDs(n)).parent().find(".tempoFinal"),n)  // ATUALIZA CONTADOR 
+                    mostraTempo($(_todosIDs(n)).parent().find(".tempoFinal"),tempoEmON[n])  // ATUALIZA CONTADOR 
                 }
-                tempoEmON[n] = 0
             }
+            tempoEmON = Array(350).fill(0)
         }
-        return entradasESaidasConcatenadas[1]
+        return {variavelReferencia,tempoEmON}
     }
 
-    var identificaCartao = cart => {
+    const identificaCartao = cart => {
         var  min, max
         cart === undefined ? cart = "c2" : cart = cart
-        var ternario = (cartao,mi,ma) => {if(cart == cartao) {min=mi, max=ma}}
+        const ternario = (cartao,mi,ma) => {if(cart == cartao) {min=mi, max=ma}}
         ternario("c2",0,14);
         ternario("c3",14,30);
         ternario("c4",30,37);
@@ -115,28 +112,24 @@ setTimeout(() => {
         return {min, max}
     }
 
-    var mostraTempo = (local,IO) => {
-        var dezena = tempoEmON[IO] /100
+    const mostraTempo = (local,IO) => {
+        var dezena = IO /100
         local.text(dezena.toFixed(1) + " s") 
     }
 
-    var entradasESaidasConcatenadas = []
-
-    var mudaDePagDevice = () => {
+    const mudaDePagDevice = () => {
         const addressToDevice = "http://10.2.65.150/awp/"
-        //const AbreviaAjax = index => setInterval(() => entradasESaidasConcatenadas = ajaxValues(addressToDevice + index), 600)
-        /*const replacePagDevice = (Device, cpuBool) => {
-            window.location.replace(addressToDevice + Device + ".html")
-            return cpuBool
-        }*/
         var restolink
         $("#device option:selected").val() == "CPU" ? restolink = "index.html" : restolink = "index2.html";
-        /*$("#device").change(() => {
-            $("#device option:selected").val() == "CPU" ? replacePagDevice("injetore",0) : replacePagDevice("remota",1)
-        })*/
+        restolink = addressToDevice + restolink
+        return restolink
     }
 
     const MainIdentificacaoRapida = () => {
+
+        tempoEmON = Array(350).fill(0)//preencheArraycomZeros(todosIDs.length)
+        var entradasESaidasConcatenadas = []
+        var link = mudaDePagDevice()
         $(".IDEN").attr('id','IDENTIFICACAO_RAPIDA')
         moduloDeMonutoramento = "IDENTIFICACAO_RAPIDA"
         todosIDs = invalidaVariveisVazias("tag")
@@ -147,17 +140,24 @@ setTimeout(() => {
             $(_todosIDs(n)).text("")  
         }
 
-        let armazenaBorda = entradasESaidasConcatenadas[1]
+        let armazenaBorda
         setInterval(() => {if(selecionaValor("#exibicao","IDENTIFICACAO_RAPIDA")){
-            entradasESaidasConcatenadas = ajaxValues()
-            tempoEmON = somaMaisUmSeVariavelDentro(tempoEmON)
-            armazenaBorda = resetaCiclo(armazenaBorda)
-            pintaIdentificacaoRapida()
+            entradasESaidasConcatenadas = ajaxValues(link)
+            tempoEmON = somaMaisUmSeVariavelDentro(tempoEmON,entradasESaidasConcatenadas)
+            resetaCiclo(resetaCiclo().variavelReferencia,entradasESaidasConcatenadas[1],tempoEmON)
+            tempoEmON = resetaCiclo().tempoEmON
+            pintaIdentificacaoRapida(entradasESaidasConcatenadas,tempoEmON)
         }},10)
+
+        $("#device").change(() => link = mudaDePagDevice())
     }
 
 
     const MainTemposDeCiclo = () => {
+
+        tempoEmON = Array(350).fill(0)//preencheArraycomZeros(todosIDs.length)
+        var entradasESaidasConcatenadas = []
+        var link = mudaDePagDevice()
         $(".IDEN").attr('id','temposDeCiclo')
         moduloDeMonutoramento = "temposDeCiclo"
         todosIDs = invalidaVariveisVazias("tag")
@@ -174,14 +174,16 @@ setTimeout(() => {
 
         let armazenaBorda = entradasESaidasConcatenadas[1]
         setInterval(() => {if(selecionaValor("#exibicao","temposDeCiclo")){
-            entradasESaidasConcatenadas = ajaxValues()
-            preencheBarraTemposDeCiclo(tamanhoCartao)
-            tempoEmON = somaMaisUmSeVariavelDentro(tempoEmON)
-            armazenaBorda = resetaCiclo(armazenaBorda)
+            entradasESaidasConcatenadas = ajaxValues(link)
+            preencheBarraTemposDeCiclo(tamanhoCartao,entradasESaidasConcatenadas)
+            somaMaisUmSeVariavelDentro(tempoEmON,entradasESaidasConcatenadas)
+            armazenaBorda = resetaCiclo(armazenaBorda,tempoEmON)
+            console.log( resetaCiclo().tempoEmON)
         }});
+
+        $("#device").change(() => link = mudaDePagDevice())
     }
 
-    $("#device").change(() => mudaDePagDevice())
     $("#exibicao").change(() => selecionaValor("#exibicao","IDENTIFICACAO_RAPIDA") ? MainIdentificacaoRapida() : MainTemposDeCiclo())
 
     const selecionaValor = (nome,valor) => $(nome+" option:selected").val() == valor
