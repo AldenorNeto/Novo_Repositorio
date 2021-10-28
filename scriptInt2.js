@@ -3,24 +3,13 @@ setTimeout(() => {
     var fruta = ['3', '2', '2', '7', '9', '0', '6', '2', '5', '8']
     setInterval(()=>fruta[parseInt((Math.random()*9)+1)] = parseInt(Math.random()*5) + '',1000)
     var entradaAnalogica = [55,77,99,33,11]
+
     const ajaxValues = link => {
-        
-        //$.get(link, function(data){
-            var data = "4227906258 3147649 433684552 2139226109"
-            var arr = data.split();          //['xxxxxxxxxxx xxxxxxxx xxxxxxxxxx xxxxx']
-            arr = arr[0].split(' ');          //['xxxxxxxxxxx', 'xxxxxxxx', 'xxxxxxxxxx', 'xxxxx']
-                
+        //$.get(link, data => {
+            var data = [fruta.join(''),' ',fruta.join(''),' ',fruta.join(''),' ','9226109'].join('')//'xxxxxxxxxxx xxxxxxxx xxxxxxxxxx xxxxx'
 
-                arr = [fruta.join(''),fruta.join(''),fruta.join(''),'9226109']
-
-            
-            var quantidadeUDInt = arr.length        //4 ou 6
-            var arrayArmazenaEmBool = []
-            for(let n = 0; n < quantidadeUDInt; n++){
-                arrayArmazenaEmBool.push(parseInt(arr[n]).toString(2))        //['1010100110101', '110100010', '101011110010', '10110']
-                arrayArmazenaEmBool[n] = arrayArmazenaEmBool[n].padStart(32,0) //padroniza tamanho do array
-                arrayArmazenaEmBool[n] = Array.from(arrayArmazenaEmBool[n],Math.abs).reverse()
-            }
+            var arrayArmazenaEmBool = [data][0].split(' ').reduce((acumulado, indice) => acumulado.concat(parseInt(indice).toString(2)),[]) //['1010100110101', '110100010', '101011110010', '10110']
+            arrayArmazenaEmBool = arrayArmazenaEmBool.map((value) => value.padStart(32,0)).map((value) => value = Array.from(value,Math.abs).reverse()) 
             return arrayArmazenaEmBool.reduce((total, indice) => total.concat(indice), [])
          //})
     }
@@ -51,13 +40,8 @@ setTimeout(() => {
 
     const backgroundcolor = (address,cor) => $(address).css('background-color',cor)
 
-    const somaMaisUmSeVariavelDentro = (arrayArmazenaTemp,arrayDeReferencia) => {
-        for(let n = 0; n < todosIDs.length; n++){
-            if(arrayDeReferencia[n]){
-                arrayArmazenaTemp[n]++
-            }  
-        }
-        return arrayArmazenaTemp
+    const somaMaisUmSeVariavelDentro = (arrayDeReferencia) => {
+        for(let n = 0; n < todosIDs.length; n++){if(arrayDeReferencia[n])tempoEmON[n]++}
     }
 
     const pintaIdentificacaoRapida = (VariveisQueSeramPintadas,tempoEmON) => {
@@ -84,11 +68,10 @@ setTimeout(() => {
             }
         }
     }
-            //>>>>>$(".tamanho").css('height',parseInt(Math.random()*250)+'px')<<<<
+    //>>>>>$(".tamanho").css('height',parseInt(Math.random()*250)+'px')<<<<
 
     const resetaCiclo = (memorizaBorda,variavelReferencia) =>{
         if((memorizaBorda == 0) && (variavelReferencia == 1)){ // ATUALIZA CONTADOR DE VARIAVEL DENTRO A CADA CICLO
-            console.log(8787);
             for(let n = 0; n < todosIDs.length ; n++){
                 if(moduloDeMonutoramento == "temposDeCiclo"){
                     mostraTempo($(_todosIDs(n)).parent().find(".tempoFinal"),tempoEmON[n])  // ATUALIZA CONTADOR 
@@ -127,7 +110,7 @@ setTimeout(() => {
 
     const MainIdentificacaoRapida = () => {
 
-        tempoEmON = Array(350).fill(0)//preencheArraycomZeros(todosIDs.length)
+       
         var entradasESaidasConcatenadas = []
         var link = mudaDePagDevice()
         $(".IDEN").attr('id','IDENTIFICACAO_RAPIDA')
@@ -135,27 +118,44 @@ setTimeout(() => {
         todosIDs = invalidaVariveisVazias("tag")
         todosWrd = invalidaVariveisVazias("wrd")
         
+        
         for(let n = 0; n < todosIDs.length; n++){
             $(".tempoFinal").remove()
             $(_todosIDs(n)).text("")  
         }
 
         let armazenaBorda
+        tempoEmON = Array(todosIDs.length).fill(0)//preencheArraycomZeros(todosIDs.length)
         setInterval(() => {if(selecionaValor("#exibicao","IDENTIFICACAO_RAPIDA")){
             entradasESaidasConcatenadas = ajaxValues(link)
-            tempoEmON = somaMaisUmSeVariavelDentro(tempoEmON,entradasESaidasConcatenadas)
-            resetaCiclo(resetaCiclo().variavelReferencia,entradasESaidasConcatenadas[1],tempoEmON)
-            tempoEmON = resetaCiclo().tempoEmON
+
+            console.log({entradasESaidasConcatenadas});
+            for(let n = 0; n < todosIDs.length ; n++){
+                entradasESaidasConcatenadas[n]
+            }
+
+
+
+
+
+
+
+
+
+            somaMaisUmSeVariavelDentro(entradasESaidasConcatenadas)
+            if(entradasESaidasConcatenadas[1] && !armazenaBorda) tempoEmON = Array(todosIDs.length).fill(0)
+            armazenaBorda = entradasESaidasConcatenadas[1]
             pintaIdentificacaoRapida(entradasESaidasConcatenadas,tempoEmON)
         }},10)
 
         $("#device").change(() => link = mudaDePagDevice())
     }
 
-
+    var tempoEmON = Array(todosIDs.length).fill(0)//preencheArraycomZeros(todosIDs.length)
+    console.log(tempoEmON);
     const MainTemposDeCiclo = () => {
 
-        tempoEmON = Array(350).fill(0)//preencheArraycomZeros(todosIDs.length)
+
         var entradasESaidasConcatenadas = []
         var link = mudaDePagDevice()
         $(".IDEN").attr('id','temposDeCiclo')
@@ -178,7 +178,6 @@ setTimeout(() => {
             preencheBarraTemposDeCiclo(tamanhoCartao,entradasESaidasConcatenadas)
             somaMaisUmSeVariavelDentro(tempoEmON,entradasESaidasConcatenadas)
             armazenaBorda = resetaCiclo(armazenaBorda,tempoEmON)
-            console.log( resetaCiclo().tempoEmON)
         }});
 
         $("#device").change(() => link = mudaDePagDevice())
@@ -190,5 +189,6 @@ setTimeout(() => {
     var moduloDeMonutoramento = "IDENTIFICACAO_RAPIDA"
     mudaDePagDevice()
     MainIdentificacaoRapida()
+
 
 })
