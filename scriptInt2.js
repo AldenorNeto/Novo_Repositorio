@@ -20,17 +20,14 @@ setTimeout(() => {
     const _todosWrd = id => "#" + todosWrd[id]
     
     const invalidaVariveisVazias = valorClass => {
-        var tag, texto, array = []
-        var _valorClassEQ = id => $("."+valorClass+":eq(" + id +")")
-        var numerosDeElementoDaClass = $("."+valorClass).length
-        for(let n = 0; n < numerosDeElementoDaClass; n++){
-            texto = _valorClassEQ(n).next().text()
-            if(texto){
-                tag = _valorClassEQ(n).next().next().attr("id")
-                array.push(tag)
-            }
-            else{
-                setTimeout(()=>adicionaClasseAosCartoes(_valorClassEQ(n),'class'),2)
+        var array = []
+        const _valorClassEQ = id => $("."+valorClass+":eq(" + id +")")
+        const ElementoDaClass = $("."+valorClass)
+        for(let n in ElementoDaClass){
+            if(_valorClassEQ(n).next().text()){
+                array.push(_valorClassEQ(n).next().next().attr("id"))
+            }else{
+                adicionaClasseAosCartoes(_valorClassEQ(n),'class')
             }
         } 
         return array
@@ -41,11 +38,11 @@ setTimeout(() => {
     const backgroundcolor = (address,cor) => $(address).css('background-color',cor)
 
     const somaMaisUmSeVariavelDentro = (arrayDeReferencia) => {
-        for(let n = 0; n < todosIDs.length; n++){if(arrayDeReferencia[n])tempoEmON[n]++}
+        for(let n in todosIDs){if(arrayDeReferencia[n])tempoEmON[n]++}
     }
 
     const pintaIdentificacaoRapida = (VariveisQueSeramPintadas,tempoEmON) => {
-        for(let n = 0; n < todosIDs.length; n++){
+        for(let n in todosIDs){
             VariveisQueSeramPintadas[n] ? backgroundcolor(_todosIDs(n),'#00ff00') : backgroundcolor(_todosIDs(n),'#dbdbdb')
             mostraTempo($(_todosIDs(n)),tempoEmON[n])
         }
@@ -69,18 +66,6 @@ setTimeout(() => {
         }
     }
     //>>>>>$(".tamanho").css('height',parseInt(Math.random()*250)+'px')<<<<
-
-    const resetaCiclo = (memorizaBorda,variavelReferencia) =>{
-        if((memorizaBorda == 0) && (variavelReferencia == 1)){ // ATUALIZA CONTADOR DE VARIAVEL DENTRO A CADA CICLO
-            for(let n = 0; n < todosIDs.length ; n++){
-                if(moduloDeMonutoramento == "temposDeCiclo"){
-                    mostraTempo($(_todosIDs(n)).parent().find(".tempoFinal"),tempoEmON[n])  // ATUALIZA CONTADOR 
-                }
-            }
-            tempoEmON = Array(350).fill(0)
-        }
-        return {variavelReferencia,tempoEmON}
-    }
 
     const identificaCartao = cart => {
         var  min, max
@@ -110,60 +95,41 @@ setTimeout(() => {
 
     const MainIdentificacaoRapida = () => {
 
-       
         var entradasESaidasConcatenadas = []
         var link = mudaDePagDevice()
+
+        $(".tempoFinal").remove()
         $(".IDEN").attr('id','IDENTIFICACAO_RAPIDA')
-        moduloDeMonutoramento = "IDENTIFICACAO_RAPIDA"
         todosIDs = invalidaVariveisVazias("tag")
         todosWrd = invalidaVariveisVazias("wrd")
-        
-        
-        for(let n = 0; n < todosIDs.length; n++){
-            $(".tempoFinal").remove()
-            $(_todosIDs(n)).text("")  
-        }
 
         let armazenaBorda
-        tempoEmON = Array(todosIDs.length).fill(0)//preencheArraycomZeros(todosIDs.length)
-        setInterval(() => {if(selecionaValor("#exibicao","IDENTIFICACAO_RAPIDA")){
+        tempoEmON = Array(todosIDs.length).fill(0)
+        
+        var loop = () => {
             entradasESaidasConcatenadas = ajaxValues(link)
-
-            console.log({entradasESaidasConcatenadas});
-            for(let n = 0; n < todosIDs.length ; n++){
-                entradasESaidasConcatenadas[n]
-            }
-
-
-
-
-
-
-
-
-
             somaMaisUmSeVariavelDentro(entradasESaidasConcatenadas)
             if(entradasESaidasConcatenadas[1] && !armazenaBorda) tempoEmON = Array(todosIDs.length).fill(0)
             armazenaBorda = entradasESaidasConcatenadas[1]
             pintaIdentificacaoRapida(entradasESaidasConcatenadas,tempoEmON)
-        }},10)
-
+        }
+        clearInterval(cleanLoop)
+        cleanLoop = setInterval(loop)
+        
         $("#device").change(() => link = mudaDePagDevice())
     }
 
-    var tempoEmON = Array(todosIDs.length).fill(0)//preencheArraycomZeros(todosIDs.length)
-    console.log(tempoEmON);
-    const MainTemposDeCiclo = () => {
+    var tempoEmON = Array(todosIDs.length).fill(0)
 
+    const MainTemposDeCiclo = () => {
 
         var entradasESaidasConcatenadas = []
         var link = mudaDePagDevice()
         $(".IDEN").attr('id','temposDeCiclo')
-        moduloDeMonutoramento = "temposDeCiclo"
         todosIDs = invalidaVariveisVazias("tag")
         todosWrd = invalidaVariveisVazias("wrd")
 
-        for(let n = 0; n < todosIDs.length; n++){
+        for(let n in todosIDs){
             $(_todosIDs(n)).parent().append("<div class='tempoFinal'>0.0s</div>")
             $(_todosIDs(n)).text("")
             backgroundcolor(_todosIDs(n),'#e2e2e2')
@@ -173,12 +139,15 @@ setTimeout(() => {
         $(".lupa").change(() => tamanhoCartao = trocaAsBarrasAoTrocarOCartao())
 
         let armazenaBorda = entradasESaidasConcatenadas[1]
-        setInterval(() => {if(selecionaValor("#exibicao","temposDeCiclo")){
+        var loop = () => { 
             entradasESaidasConcatenadas = ajaxValues(link)
             preencheBarraTemposDeCiclo(tamanhoCartao,entradasESaidasConcatenadas)
-            somaMaisUmSeVariavelDentro(tempoEmON,entradasESaidasConcatenadas)
-            armazenaBorda = resetaCiclo(armazenaBorda,tempoEmON)
-        }});
+            somaMaisUmSeVariavelDentro(entradasESaidasConcatenadas)
+            if(entradasESaidasConcatenadas[1] && !armazenaBorda){for(let n in todosIDs){mostraTempo($(_todosIDs(n)).parent().find(".tempoFinal"),tempoEmON[n])}tempoEmON = Array(todosIDs.length).fill(0)}
+            armazenaBorda = entradasESaidasConcatenadas[1]  // ATUALIZA CONTADOR }
+        }
+        clearInterval(cleanLoop)
+        cleanLoop = setInterval(loop)
 
         $("#device").change(() => link = mudaDePagDevice())
     }
@@ -186,7 +155,7 @@ setTimeout(() => {
     $("#exibicao").change(() => selecionaValor("#exibicao","IDENTIFICACAO_RAPIDA") ? MainIdentificacaoRapida() : MainTemposDeCiclo())
 
     const selecionaValor = (nome,valor) => $(nome+" option:selected").val() == valor
-    var moduloDeMonutoramento = "IDENTIFICACAO_RAPIDA"
+    var cleanLoop
     mudaDePagDevice()
     MainIdentificacaoRapida()
 
