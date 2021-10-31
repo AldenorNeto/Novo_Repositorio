@@ -1,8 +1,9 @@
 setTimeout(() => {
     
     var fruta = ['3', '2', '2', '7', '9', '0', '6', '2', '5', '8']
+    var entradaAnalogica = [55,77,99,33,181,170,136,42,18,100,100,100,100,100,100]
     setInterval(()=>fruta[parseInt((Math.random()*9)+1)] = parseInt(Math.random()*5) + '',1000)
-    var entradaAnalogica = [55,77,99,33,11]
+  
 
     const ajaxValues = link => {
         //$.get(link, data => {
@@ -65,7 +66,18 @@ setTimeout(() => {
             }
         }
     }
-    //>>>>>$(".tamanho").css('height',parseInt(Math.random()*250)+'px')<<<<
+
+
+    
+    var pintaAnalogicasTemposDeCiclo = () => {
+        for(let n in entradaAnalogica){
+            entradaAnalogica[n] = Math.abs(entradaAnalogica[n] + parseInt((Math.random() - 0.5)*10))
+            entradaAnalogica[n] > 190 ? entradaAnalogica[n] = 190 : entradaAnalogica[n] * 1
+            $(_todosWrd(n) + " .tamanho").css('height',entradaAnalogica[n])
+            
+        }
+    }
+
 
     const identificaCartao = cart => {
         var  min, max
@@ -81,8 +93,7 @@ setTimeout(() => {
     }
 
     const mostraTempo = (local,IO) => {
-        var dezena = IO /100
-        local.text(dezena.toFixed(1) + " s") 
+        local.text((IO /100).toFixed(1) + " s") 
     }
 
     const mudaDePagDevice = () => {
@@ -95,7 +106,7 @@ setTimeout(() => {
 
     const MainIdentificacaoRapida = () => {
 
-        var entradasESaidasConcatenadas = []
+        var entradasESaidasConcatenadas
         var link = mudaDePagDevice()
 
         $(".tempoFinal").remove()
@@ -119,11 +130,9 @@ setTimeout(() => {
         $("#device").change(() => link = mudaDePagDevice())
     }
 
-    var tempoEmON = Array(todosIDs.length).fill(0)
-
     const MainTemposDeCiclo = () => {
 
-        var entradasESaidasConcatenadas = []
+        var entradasESaidasConcatenadas
         var link = mudaDePagDevice()
         $(".IDEN").attr('id','temposDeCiclo')
         todosIDs = invalidaVariveisVazias("tag")
@@ -138,13 +147,14 @@ setTimeout(() => {
         var tamanhoCartao = identificaCartao($(".lupa:checked").val())
         $(".lupa").change(() => tamanhoCartao = trocaAsBarrasAoTrocarOCartao())
 
-        let armazenaBorda = entradasESaidasConcatenadas[1]
+        let armazenaBorda
         var loop = () => { 
             entradasESaidasConcatenadas = ajaxValues(link)
             preencheBarraTemposDeCiclo(tamanhoCartao,entradasESaidasConcatenadas)
             somaMaisUmSeVariavelDentro(entradasESaidasConcatenadas)
             if(entradasESaidasConcatenadas[1] && !armazenaBorda){for(let n in todosIDs){mostraTempo($(_todosIDs(n)).parent().find(".tempoFinal"),tempoEmON[n])}tempoEmON = Array(todosIDs.length).fill(0)}
             armazenaBorda = entradasESaidasConcatenadas[1]  // ATUALIZA CONTADOR }
+            pintaAnalogicasTemposDeCiclo()
         }
         clearInterval(cleanLoop)
         cleanLoop = setInterval(loop)
@@ -156,6 +166,7 @@ setTimeout(() => {
 
     const selecionaValor = (nome,valor) => $(nome+" option:selected").val() == valor
     var cleanLoop
+    var tempoEmON
     mudaDePagDevice()
     MainIdentificacaoRapida()
 
