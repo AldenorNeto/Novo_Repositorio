@@ -29,8 +29,34 @@
     width: 100%;
 }
 
+#indexVariaveisMaiorMenor #variaveisMaior{
+    display: flex;
+    align-items: center;
+}
+
 #indexVariaveisMaiorMenor #variaveisMaior table{
-    display: block;
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    height: 100%;
+    background-color: rgba(101, 101, 255, 0.5);
 
 }
+
+#indexVariaveisMaiorMenor #variaveisMaior tr{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    border: 1px solid;
+    width: 40vw;
+    background-color: chartreuse;
+
+}
+
+#indexVariaveisMaiorMenor #variaveisMaior tr td{
+    border: 1px solid;
+    margin: 2px 0px;
+
+}
+
 
