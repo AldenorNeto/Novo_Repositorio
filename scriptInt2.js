@@ -2,7 +2,7 @@ setTimeout(() => {
     
     var fruta = ['3', '2', '2', '7', '9', '0', '6', '2', '5', '8']
     var entradaAnalogica = [55,77,99,33,181,170,136,42,18,100,100,100,100,100,100]
-    setInterval(()=>fruta[parseInt((Math.random()*9)+1)] = parseInt(Math.random()*5) + '',1000)
+    setInterval(()=>fruta[parseInt((Math.random()*9)+1)] = parseInt(Math.random()*5) + '',2000)
   
 
     const ajaxValues = link => {
@@ -22,7 +22,7 @@ setTimeout(() => {
     
     const invalidaVariveisVazias = valorClass => {
         var array = []
-        const _valorClassEQ = id => $("."+valorClass+":eq(" + id +")")
+        const _valorClassEQ = id => $("."+valorClass+":eq("+ id +")")
         const ElementoDaClass = $("."+valorClass)
         for(let n in ElementoDaClass){
             if(_valorClassEQ(n).next().text()){
@@ -98,15 +98,38 @@ setTimeout(() => {
 
     const mudaDePagDevice = () => {
         const addressToDevice = "http://10.2.65.150/awp/"
-        var restolink
-        $("#device option:selected").val() == "CPU" ? restolink = "index.html" : restolink = "index2.html";
-        restolink = addressToDevice + restolink
-        return restolink
+        let linkCompleto
+        $("#device option:selected").val() == "CPU" ? linkCompleto = addressToDevice + "index.html" : linkCompleto = addressToDevice + "index2.html";
+        return linkCompleto
     }
+
+    function objGravaBorda(bool,id){
+        this.bool = bool
+        this.id = id
+    }
+
+    const gravaBorda = (armazenaBorda, IO) => {
+        if (armazenaBorda == undefined) armazenaBorda = IO
+        let arrayApagar = []
+
+        for(let n in armazenaBorda){
+            if((armazenaBorda[n] != IO[n]) && (todosIDs[n][0] == "I")){
+                var mic = new objGravaBorda(IO[n],_todosIDs(n))
+                arrayApagar.push(mic)
+            }
+        }
+        if(arrayApagar.length > 0)console.log(arrayApagar);
+        
+
+        return IO
+
+    }
+
 
     const MainIdentificacaoRapida = () => {
 
         var entradasESaidasConcatenadas
+        var bordaEntradasESaidas
         var link = mudaDePagDevice()
 
         $(".tempoFinal").remove()
@@ -116,9 +139,10 @@ setTimeout(() => {
 
         let armazenaBorda
         tempoEmON = Array(todosIDs.length).fill(0)
-        
+
         var loop = () => {
             entradasESaidasConcatenadas = ajaxValues(link)
+            bordaEntradasESaidas = gravaBorda(bordaEntradasESaidas,entradasESaidasConcatenadas)
             somaMaisUmSeVariavelDentro(entradasESaidasConcatenadas)
             if(entradasESaidasConcatenadas[1] && !armazenaBorda) tempoEmON = Array(todosIDs.length).fill(0)
             armazenaBorda = entradasESaidasConcatenadas[1]
