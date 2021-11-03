@@ -1,0 +1,36 @@
+#all2{
+    display: flex;
+    justify-content: center;
+}
+
+#all2 > *{
+    display: flex;
+}
+
+#indexVariaveisMaiorMenor{
+    background-color: aliceblue;
+    justify-content: space-between;
+    width: 90%;
+    height: 300px;
+}
+
+#indexVariaveisMaiorMenor > *{
+    background-color: rgba(255, 2, 2, 0.301);
+    width: 46%;
+    border: 1px solid;
+    margin: 2px;
+    flex-direction: column;
+}
+
+.cabecalho{
+    border-bottom: 1px solid;
+    background-color: rgba(0, 255, 255, 0.432);
+    justify-content: center;
+    width: 100%;
+}
+
+#indexVariaveisMaiorMenor #variaveisMaior table{
+    display: block;
+
+}
+
