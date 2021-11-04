@@ -1,27 +1,27 @@
 setTimeout(() => {
     
-    var fruta = ['3', '2', '2', '7', '9', '0', '6', '2', '5', '8']
-    var entradaAnalogica = [55,77,99,33,181,170,136,42,18,100,100,100,100,100,100]
+    let fruta = ['3', '2', '2', '7', '9', '0', '6', '2', '5', '8']
+    let entradaAnalogica = [55,77,99,33,181,170,136,42,18,100,100,100,100,100,100]
     setInterval(()=>fruta[parseInt((Math.random()*9)+1)] = parseInt(Math.random()*5) + '',2000)
   
 
     const ajaxValues = link => {
         //$.get(link, data => {
-            var data = [fruta.join(''),' ',fruta.join(''),' ',fruta.join(''),' ','9226109'].join('')//'xxxxxxxxxxx xxxxxxxx xxxxxxxxxx xxxxx'
+            let data = [fruta.join(''),' ',fruta.join(''),' ',fruta.join(''),' ','9226109'].join('')//'xxxxxxxxxxx xxxxxxxx xxxxxxxxxx xxxxx'
 
-            var arrayArmazenaEmBool = [data][0].split(' ').reduce((acumulado, indice) => acumulado.concat(parseInt(indice).toString(2)),[]) //['1010100110101', '110100010', '101011110010', '10110']
+            let arrayArmazenaEmBool = [data][0].split(' ').reduce((acumulado, indice) => acumulado.concat(parseInt(indice).toString(2)),[]) //['1010100110101', '110100010', '101011110010', '10110']
             arrayArmazenaEmBool = arrayArmazenaEmBool.map((value) => value.padStart(32,0)).map((value) => value = Array.from(value,Math.abs).reverse()) 
             return arrayArmazenaEmBool.reduce((total, indice) => total.concat(indice), [])
          //})
     }
 
-    var todosIDs = []
-    var todosWrd = []
+    let todosIDs = []
+    let todosWrd = []
     const _todosIDs = id => "#" + todosIDs[id]
     const _todosWrd = id => "#" + todosWrd[id]
     
     const invalidaVariveisVazias = valorClass => {
-        var array = []
+        let array = []
         const _valorClassEQ = id => $("."+valorClass+":eq("+ id +")")
         const ElementoDaClass = $("."+valorClass)
         for(let n in ElementoDaClass){
@@ -69,7 +69,7 @@ setTimeout(() => {
 
 
     
-    var pintaAnalogicasTemposDeCiclo = () => {
+    const pintaAnalogicasTemposDeCiclo = () => {
         for(let n in entradaAnalogica){
             entradaAnalogica[n] = Math.abs(entradaAnalogica[n] + parseInt((Math.random() - 0.5)*10))
             entradaAnalogica[n] > 190 ? entradaAnalogica[n] = 190 : entradaAnalogica[n] * 1
@@ -80,7 +80,7 @@ setTimeout(() => {
 
 
     const identificaCartao = cart => {
-        var  min, max
+        let  min, max
         cart === undefined ? cart = "c2" : cart = cart
         const ternario = (cartao,mi,ma) => {if(cart == cartao) {min=mi, max=ma}}
         ternario("c2",0,14);
@@ -112,36 +112,43 @@ setTimeout(() => {
         if (armazenaBorda == undefined) armazenaBorda = IO
         let arrayApagar = []
 
-        for(let n in armazenaBorda){
-            if((armazenaBorda[n] != IO[n]) && (todosIDs[n][0] == "I")){
-                var mic = new objGravaBorda(IO[n],_todosIDs(n))
-                arrayApagar.push(mic)
-            }
-        }
-        if(arrayApagar.length > 0)console.log(arrayApagar);
         
-
+        if(todosIDs.length > 0)for(let n in armazenaBorda){
+            if(armazenaBorda[n] != IO[n] && todosIDs[n][0] == "I") arrayApagar.push(new objGravaBorda(IO[n],todosIDs[n]))
+        }
+        if(arrayApagar.length > 0)preencheBordaGrid(arrayApagar)
         return IO
+    }
 
+    const preencheBordaGrid = array => {
+        $("#ordemDasVariaveis > *").remove()
+        for(let n in array){
+            let bool
+            array[n].bool ? bool = 'subida' :  bool = 'descida'
+            $("#ordemDasVariaveis").append('<nav class='+bool+'><i class="ceta"></i>'+array[n].id+'</nav>')
+        }
+        
     }
 
 
     const MainIdentificacaoRapida = () => {
 
-        var entradasESaidasConcatenadas
-        var bordaEntradasESaidas
-        var link = mudaDePagDevice()
+        let entradasESaidasConcatenadas
+        let bordaEntradasESaidas
+        let armazenaBorda
+
+        tempoEmON = Array(todosIDs.length).fill(0)
 
         $(".tempoFinal").remove()
         $(".IDEN").attr('id','IDENTIFICACAO_RAPIDA')
+
         todosIDs = invalidaVariveisVazias("tag")
         todosWrd = invalidaVariveisVazias("wrd")
 
-        let armazenaBorda
-        tempoEmON = Array(todosIDs.length).fill(0)
+        /*para teste tabelamostra borda >=====>*/todosIDs = ['I00', 'I01', 'I02', 'I03', 'I04', 'I05', 'I06', 'I07', 'I10', 'I11', 'I12', 'I13', 'I14', 'I15', 'I20', 'I21', 'I22', 'I23', 'I24', 'I25', 'I26', 'I27', 'I30', 'I31', 'I32', 'I33', 'I34', 'I35', 'I36', 'I37', 'I46', 'I47', 'I50', 'I51', 'I55', 'I56', 'I57', 'I60', 'I61', 'I62', 'I63', 'I64', 'I65', 'I80', 'I81', 'I82', 'I83', 'I84', 'I85', 'I90', 'I91', 'Q00', 'Q01', 'Q02', 'Q03', 'Q04', 'Q05', 'Q06', 'Q07', 'Q10', 'Q11', 'Q12', 'Q13', 'Q14', 'Q15', 'Q16', 'Q17', 'Q20', 'Q21', 'Q22', 'Q23', 'Q24', 'Q25', 'Q26', 'Q27', 'Q30', 'Q31', 'Q32', 'Q33', 'Q34', 'Q35', 'Q36', 'Q37', 'Q40', 'Q41', 'Q42', 'Q43', 'Q44', 'Q45', 'Q46', 'Q47', 'Q50', 'Q51', 'Q52', 'Q53', 'Q54', 'Q55', 'Q56', 'Q57', 'SI640']
 
-        var loop = () => {
-            entradasESaidasConcatenadas = ajaxValues(link)
+        let loop = () => {
+            entradasESaidasConcatenadas = ajaxValues(mudaDePagDevice())
             bordaEntradasESaidas = gravaBorda(bordaEntradasESaidas,entradasESaidasConcatenadas)
             somaMaisUmSeVariavelDentro(entradasESaidasConcatenadas)
             if(entradasESaidasConcatenadas[1] && !armazenaBorda) tempoEmON = Array(todosIDs.length).fill(0)
@@ -156,8 +163,7 @@ setTimeout(() => {
 
     const MainTemposDeCiclo = () => {
 
-        var entradasESaidasConcatenadas
-        var link = mudaDePagDevice()
+        let entradasESaidasConcatenadas
         $(".IDEN").attr('id','temposDeCiclo')
         todosIDs = invalidaVariveisVazias("tag")
         todosWrd = invalidaVariveisVazias("wrd")
@@ -168,12 +174,13 @@ setTimeout(() => {
             backgroundcolor(_todosIDs(n),'#e2e2e2')
         }
 
-        var tamanhoCartao = identificaCartao($(".lupa:checked").val())
+        let tamanhoCartao = identificaCartao($(".lupa:checked").val())
         $(".lupa").change(() => tamanhoCartao = trocaAsBarrasAoTrocarOCartao())
 
         let armazenaBorda
-        var loop = () => { 
-            entradasESaidasConcatenadas = ajaxValues(link)
+        let loop = () => { 
+
+            entradasESaidasConcatenadas = ajaxValues(mudaDePagDevice())
             preencheBarraTemposDeCiclo(tamanhoCartao,entradasESaidasConcatenadas)
             somaMaisUmSeVariavelDentro(entradasESaidasConcatenadas)
             if(entradasESaidasConcatenadas[1] && !armazenaBorda){for(let n in todosIDs){mostraTempo($(_todosIDs(n)).parent().find(".tempoFinal"),tempoEmON[n])}tempoEmON = Array(todosIDs.length).fill(0)}
@@ -189,8 +196,8 @@ setTimeout(() => {
     $("#exibicao").change(() => selecionaValor("#exibicao","IDENTIFICACAO_RAPIDA") ? MainIdentificacaoRapida() : MainTemposDeCiclo())
 
     const selecionaValor = (nome,valor) => $(nome+" option:selected").val() == valor
-    var cleanLoop
-    var tempoEmON
+    let cleanLoop
+    let tempoEmON
     mudaDePagDevice()
     MainIdentificacaoRapida()
 

@@ -11,6 +11,7 @@ body{
 }
 #all *{
     display: flex;
+    font-family: Verdana, Arial, Helvetica, sans-serif;
 }
 
 #all article{
@@ -57,3 +58,6 @@ body{
     flex-direction: column;
 }
 
+#all .br{
+    height: 3vw;
+}

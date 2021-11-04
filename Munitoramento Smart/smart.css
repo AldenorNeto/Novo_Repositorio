@@ -7,15 +7,87 @@
     display: flex;
 }
 
+#ordemDasVariaveis{
+    border: 1px solid;
+    height: fit-content;
+    min-height: 58px;
+    width: 90%;
+    max-width: 1695px;
+    flex-wrap: wrap;
+    background-color: rgb(204, 236, 255);
+    padding: 5px 0.6%;
+
+}
+
+#ordemDasVariaveis > *{
+    border: 1px solid;
+    align-items: center;
+    height: min-content;
+    padding: 5px;
+    font-size: 30px;
+    margin: 5px;
+    padding: auto;
+}
+
+#ordemDasVariaveis .subida {
+    background-color: rgb(151, 255, 165);
+}
+
+#ordemDasVariaveis .descida {
+
+    background-color: rgb(252, 168, 129);
+}
+
+.ceta {
+    margin-top: 4px;
+    box-sizing: border-box;
+    position: relative;
+    display: block;
+    transform: scale(var(--ggs,1));
+    width: 22px;
+    height: 22px;
+    border: 2px solid transparent;
+    border-radius: 100px
+}
+.subida .ceta::after {
+    content: "";
+    display: block;
+    box-sizing: border-box;
+    position: absolute;
+    width: 10px;
+    height: 10px;
+    border-bottom: 2px solid;
+    border-right: 2px solid;
+    transform: rotate(225deg);
+    left: 4px;
+    top: 2px
+}
+.descida .ceta::after {
+    content: "";
+    display: block;
+    box-sizing: border-box;
+    position: absolute;
+    width: 10px;
+    height: 10px;
+    border-bottom: 2px solid;
+    border-right: 2px solid;
+    transform: rotate(45deg);
+    left: 4px;
+    top: 2px
+}
+
+
+
+
 #indexVariaveisMaiorMenor{
-    background-color: aliceblue;
+
     justify-content: space-between;
     width: 90%;
     height: 300px;
 }
 
 #indexVariaveisMaiorMenor > *{
-    background-color: rgba(255, 2, 2, 0.301);
+    background-color: rgb(255, 255, 255);
     width: 46%;
     border: 1px solid;
     margin: 2px;
@@ -24,7 +96,7 @@
 
 .cabecalho{
     border-bottom: 1px solid;
-    background-color: rgba(0, 255, 255, 0.432);
+
     justify-content: center;
     width: 100%;
 }
@@ -34,29 +106,25 @@
     align-items: center;
 }
 
-#indexVariaveisMaiorMenor #variaveisMaior table{
-    display: flex;
+#indexVariaveisMaiorMenor #variaveisMaior #table{
+    display: block;
+    border-collapse: collapse;
     width: 100%;
-    justify-content: center;
     height: 100%;
-    background-color: rgba(101, 101, 255, 0.5);
+    
 
 }
 
-#indexVariaveisMaiorMenor #variaveisMaior tr{
-    display: flex;
-    flex-direction: row;
-    justify-content: space-around;
+#indexVariaveisMaiorMenor #variaveisMaior table tr td{
     border: 1px solid;
-    width: 40vw;
-    background-color: chartreuse;
+    margin: 12px 12px;
+    width: 99999px;
+    height: 20%;
 
 }
 
-#indexVariaveisMaiorMenor #variaveisMaior tr td{
-    border: 1px solid;
-    margin: 2px 0px;
-
+#indexVariaveisMaiorMenor #variaveisMaior table tr:nth-child(even) {
+    background-color: #ffffff52;
 }
 
 
