@@ -105,7 +105,11 @@ setTimeout(() => {
 
     function objGravaBorda(bool,id){
         this.bool = bool
-        this.id = id
+        this.id = id.substring(0,id.length -1) + '.' +  id[id.length - 1]
+    }
+
+    const arrayGravaBordaCicloCompleto = {
+        array: []
     }
 
     const gravaBorda = (armazenaBorda, IO) => {
@@ -116,18 +120,22 @@ setTimeout(() => {
         if(todosIDs.length > 0)for(let n in armazenaBorda){
             if(armazenaBorda[n] != IO[n] && todosIDs[n][0] == "I") arrayApagar.push(new objGravaBorda(IO[n],todosIDs[n]))
         }
-        if(arrayApagar.length > 0)preencheBordaGrid(arrayApagar)
+        if(arrayApagar.length > 0){
+            arrayGravaBordaCicloCompleto.array.push(arrayApagar)
+        }
         return IO
     }
 
     const preencheBordaGrid = array => {
         $("#ordemDasVariaveis > *").remove()
         for(let n in array){
-            let bool
-            array[n].bool ? bool = 'subida' :  bool = 'descida'
-            $("#ordemDasVariaveis").append('<nav class='+bool+'><i class="ceta"></i>'+array[n].id+'</nav>')
+            for(let m in array[n]){
+                let bool
+                array[n][m].bool ? bool = 'subida' :  bool = 'descida'
+                $("#ordemDasVariaveis").append('<nav class='+bool+'><i class="ceta"></i>'+array[n][m].id+'</nav>')
+            }
         }
-        
+        return array = []
     }
 
 
@@ -151,8 +159,12 @@ setTimeout(() => {
             entradasESaidasConcatenadas = ajaxValues(mudaDePagDevice())
             bordaEntradasESaidas = gravaBorda(bordaEntradasESaidas,entradasESaidasConcatenadas)
             somaMaisUmSeVariavelDentro(entradasESaidasConcatenadas)
-            if(entradasESaidasConcatenadas[1] && !armazenaBorda) tempoEmON = Array(todosIDs.length).fill(0)
+            if(entradasESaidasConcatenadas[1] && !armazenaBorda){
+                tempoEmON = Array(todosIDs.length).fill(0)
+                arrayGravaBordaCicloCompleto.array = preencheBordaGrid(arrayGravaBordaCicloCompleto.array)
+            }
             armazenaBorda = entradasESaidasConcatenadas[1]
+            console.log(armazenaBorda);
             pintaIdentificacaoRapida(entradasESaidasConcatenadas,tempoEmON)
         }
         clearInterval(cleanLoop)
