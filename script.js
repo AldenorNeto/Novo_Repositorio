@@ -1,18 +1,15 @@
 setTimeout(() => {
     
-    let fruta = ['3', '2', '2', '7', '9', '0', '6', '2', '5', '8']
-    let entradaAnalogica = [55,77,99,33,181,170,136,42,18,100,100,100,100,100,100]
-    setInterval(()=>fruta[parseInt((Math.random()*9)+1)] = parseInt(Math.random()*5) + '',2000)
-  
+    let fruta
 
     const ajaxValues = link => {
-        //$.get(link, data => {
-            let data = [fruta.join(''),' ',fruta.join(''),' ',fruta.join(''),' ','9226109'].join('')//'xxxxxxxxxxx xxxxxxxx xxxxxxxxxx xxxxx'
-
+        $.get("../simulador.html", data => {
             let arrayArmazenaEmBool = [data][0].split(' ').reduce((acumulado, indice) => acumulado.concat(parseInt(indice).toString(2)),[]) //['1010100110101', '110100010', '101011110010', '10110']
             arrayArmazenaEmBool = arrayArmazenaEmBool.map((value) => value.padStart(32,0)).map((value) => value = Array.from(value,Math.abs).reverse()) 
-            return arrayArmazenaEmBool.reduce((total, indice) => total.concat(indice), [])
-         //})
+            console.log(arrayArmazenaEmBool.reduce((total, indice) => total.concat(indice), []));
+            fruta = arrayArmazenaEmBool.reduce((total, indice) => total.concat(indice), [])
+        })
+        return fruta
     }
 
     let todosIDs = []
@@ -153,10 +150,9 @@ setTimeout(() => {
         todosIDs = invalidaVariveisVazias("tag")
         todosWrd = invalidaVariveisVazias("wrd")
 
-        /*para teste tabelamostra borda >=====>*/todosIDs = ['I00', 'I01', 'I02', 'I03', 'I04', 'I05', 'I06', 'I07', 'I10', 'I11', 'I12', 'I13', 'I14', 'I15', 'I20', 'I21', 'I22', 'I23', 'I24', 'I25', 'I26', 'I27', 'I30', 'I31', 'I32', 'I33', 'I34', 'I35', 'I36', 'I37', 'I46', 'I47', 'I50', 'I51', 'I55', 'I56', 'I57', 'I60', 'I61', 'I62', 'I63', 'I64', 'I65', 'I80', 'I81', 'I82', 'I83', 'I84', 'I85', 'I90', 'I91', 'Q00', 'Q01', 'Q02', 'Q03', 'Q04', 'Q05', 'Q06', 'Q07', 'Q10', 'Q11', 'Q12', 'Q13', 'Q14', 'Q15', 'Q16', 'Q17', 'Q20', 'Q21', 'Q22', 'Q23', 'Q24', 'Q25', 'Q26', 'Q27', 'Q30', 'Q31', 'Q32', 'Q33', 'Q34', 'Q35', 'Q36', 'Q37', 'Q40', 'Q41', 'Q42', 'Q43', 'Q44', 'Q45', 'Q46', 'Q47', 'Q50', 'Q51', 'Q52', 'Q53', 'Q54', 'Q55', 'Q56', 'Q57', 'SI640']
-
         let loop = () => {
             entradasESaidasConcatenadas = ajaxValues(mudaDePagDevice())
+            console.log(entradasESaidasConcatenadas);
             bordaEntradasESaidas = gravaBorda(bordaEntradasESaidas,entradasESaidasConcatenadas)
             somaMaisUmSeVariavelDentro(entradasESaidasConcatenadas)
             if(entradasESaidasConcatenadas[1] && !armazenaBorda){
@@ -164,7 +160,6 @@ setTimeout(() => {
                 arrayGravaBordaCicloCompleto.array = preencheBordaGrid(arrayGravaBordaCicloCompleto.array)
             }
             armazenaBorda = entradasESaidasConcatenadas[1]
-            console.log(armazenaBorda);
             pintaIdentificacaoRapida(entradasESaidasConcatenadas,tempoEmON)
         }
         clearInterval(cleanLoop)
