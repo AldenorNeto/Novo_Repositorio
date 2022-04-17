@@ -1,15 +1,12 @@
 setTimeout(() => {
-    
-    let fruta
-
     const ajaxValues = link => {
-        $.get("../simulador.html", data => {
+        //$.get("../simulador.html", data => {
             let arrayArmazenaEmBool = [data][0].split(' ').reduce((acumulado, indice) => acumulado.concat(parseInt(indice).toString(2)),[]) //['1010100110101', '110100010', '101011110010', '10110']
             arrayArmazenaEmBool = arrayArmazenaEmBool.map((value) => value.padStart(32,0)).map((value) => value = Array.from(value,Math.abs).reverse()) 
             console.log(arrayArmazenaEmBool.reduce((total, indice) => total.concat(indice), []));
-            fruta = arrayArmazenaEmBool.reduce((total, indice) => total.concat(indice), [])
-        })
-        return fruta
+            return arrayArmazenaEmBool.reduce((total, indice) => total.concat(indice), [])
+        //})
+        //return *****
     }
 
     let todosIDs = []
@@ -22,12 +19,9 @@ setTimeout(() => {
         const _valorClassEQ = id => $("."+valorClass+":eq("+ id +")")
         const ElementoDaClass = $("."+valorClass)
         for(let n in ElementoDaClass){
-            if(_valorClassEQ(n).next().text()){
-                array.push(_valorClassEQ(n).next().next().attr("id"))
-            }else{
-                adicionaClasseAosCartoes(_valorClassEQ(n),'class')
-            }
-        } 
+            if(_valorClassEQ(n).next().text()) array.push(_valorClassEQ(n).next().next().attr("id"))
+            else adicionaClasseAosCartoes(_valorClassEQ(n),'class')
+        }
         return array
     }
 
@@ -63,8 +57,6 @@ setTimeout(() => {
             }
         }
     }
-
-
     
     const pintaAnalogicasTemposDeCiclo = () => {
         for(let n in entradaAnalogica){
@@ -75,10 +67,8 @@ setTimeout(() => {
         }
     }
 
-
-    const identificaCartao = cart => {
+    const identificaCartao = (cart = "c2") => {
         let  min, max
-        cart === undefined ? cart = "c2" : cart = cart
         const ternario = (cartao,mi,ma) => {if(cart == cartao) {min=mi, max=ma}}
         ternario("c2",0,14);
         ternario("c3",14,30);
@@ -100,20 +90,19 @@ setTimeout(() => {
         return linkCompleto
     }
 
-    function objGravaBorda(bool,id){
-        this.bool = bool
-        this.id = id.substring(0,id.length -1) + '.' +  id[id.length - 1]
+    class objGravaBorda {
+        constructor(bool, id) {
+            this.bool = bool
+            this.id = id.substring(0, id.length - 1) + '.' + id[id.length - 1]
+        }
     }
 
-    const arrayGravaBordaCicloCompleto = {
-        array: []
-    }
+    const arrayGravaBordaCicloCompleto = {array: []}
 
     const gravaBorda = (armazenaBorda, IO) => {
         if (armazenaBorda == undefined) armazenaBorda = IO
         let arrayApagar = []
 
-        
         if(todosIDs.length > 0)for(let n in armazenaBorda){
             if(armazenaBorda[n] != IO[n] && todosIDs[n][0] == "I") arrayApagar.push(new objGravaBorda(IO[n],todosIDs[n]))
         }
@@ -132,7 +121,7 @@ setTimeout(() => {
                 $("#ordemDasVariaveis").append('<nav class='+bool+'><i class="ceta"></i>'+array[n][m].id+'</nav>')
             }
         }
-        return array = []
+        return []
     }
 
 
@@ -152,7 +141,6 @@ setTimeout(() => {
 
         let loop = () => {
             entradasESaidasConcatenadas = ajaxValues(mudaDePagDevice())
-            console.log(entradasESaidasConcatenadas);
             bordaEntradasESaidas = gravaBorda(bordaEntradasESaidas,entradasESaidasConcatenadas)
             somaMaisUmSeVariavelDentro(entradasESaidasConcatenadas)
             if(entradasESaidasConcatenadas[1] && !armazenaBorda){
@@ -191,7 +179,7 @@ setTimeout(() => {
             preencheBarraTemposDeCiclo(tamanhoCartao,entradasESaidasConcatenadas)
             somaMaisUmSeVariavelDentro(entradasESaidasConcatenadas)
             if(entradasESaidasConcatenadas[1] && !armazenaBorda){for(let n in todosIDs){mostraTempo($(_todosIDs(n)).parent().find(".tempoFinal"),tempoEmON[n])}tempoEmON = Array(todosIDs.length).fill(0)}
-            armazenaBorda = entradasESaidasConcatenadas[1]  // ATUALIZA CONTADOR }
+            armazenaBorda = entradasESaidasConcatenadas[1]  // ATUALIZA CONTADOR 
             pintaAnalogicasTemposDeCiclo()
         }
         clearInterval(cleanLoop)
@@ -206,6 +194,7 @@ setTimeout(() => {
     let cleanLoop
     let tempoEmON
     mudaDePagDevice()
+
     MainIdentificacaoRapida()
 
 
