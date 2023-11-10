@@ -1,0 +1,1324 @@
+[
+  {
+    "type": "I",
+    "addressVariable": "%I0.0",
+    "nameVariable": "SENS MOLDE FECH GRADE",
+    "soft":false
+  },
+  {
+    "type": "I",
+    "addressVariable": "%I0.1",
+    "nameVariable": "SENS CIL GIRA MESA AVANCADO",
+    "soft":false
+  },
+  {
+    "type": "I",
+    "addressVariable": "%I0.2",
+    "nameVariable": "SENS CIL GIRA MESA RECUADO",
+    "soft":false
+  },
+  {
+    "type": "I",
+    "addressVariable": "%I0.3",
+    "nameVariable": "SENS CIL TRAVA GIRO FORA",
+    "soft":false
+  },
+  {
+    "type": "I",
+    "addressVariable": "%I0.4",
+    "nameVariable": "SENS CIL TRAVA GIRO DENTRO",
+    "soft":false
+  },
+  {
+    "type": "I",
+    "addressVariable": "%I0.5",
+    "nameVariable": "SENS CUNHA AVANC",
+    "soft":false
+  },
+  {
+    "type": "I",
+    "addressVariable": "%I0.6",
+    "nameVariable": "SENS CUNHA REC",
+    "soft":false
+  },
+  {
+    "type": "I",
+    "addressVariable": "%I0.7",
+    "nameVariable": "SENS INJET1 RECUADO",
+    "soft":false
+  },
+  {
+    "type": "I",
+    "addressVariable": "%I1.0",
+    "nameVariable": "SENS INJET1 AVANCADO",
+    "soft":false
+  },
+  {
+    "type": "I",
+    "addressVariable": "%I1.1",
+    "nameVariable": "SENS INJET2 RECUADO",
+    "soft":false
+  },
+  {
+    "type": "I",
+    "addressVariable": "%I1.2",
+    "nameVariable": "SENS INJET2 AVANCADO",
+    "soft":false
+  },
+  {
+    "type": "I",
+    "addressVariable": "%I1.3",
+    "nameVariable": "SENS EXTRAT RABICHO RECUADO",
+    "soft":false
+  },
+  {
+    "type": "I",
+    "addressVariable": "%I1.4",
+    "nameVariable": "SENS FINAL CARGA INJ1",
+    "soft":false
+  },
+  {
+    "type": "I",
+    "addressVariable": "%I1.5",
+    "nameVariable": "SENS FINAL CARGA INJ2",
+    "soft":false
+  },
+  {
+    "type": "I",
+    "addressVariable": "%I1.6",
+    "nameVariable": "",
+    "soft":false
+  },
+  {
+    "type": "I",
+    "addressVariable": "%I1.7",
+    "nameVariable": "",
+    "soft":false
+  },
+  {
+    "type": "I",
+    "addressVariable": "%I2.0",
+    "nameVariable": "CH GIROM POSIC LIBERA M",
+    "soft":false
+  },
+  {
+    "type": "I",
+    "addressVariable": "%I2.1",
+    "nameVariable": "CH GIROM POSIC AUTOMAT",
+    "soft":false
+  },
+  {
+    "type": "I",
+    "addressVariable": "%I2.2",
+    "nameVariable": "CH GIROM RAPIDO",
+    "soft":false
+  },
+  {
+    "type": "I",
+    "addressVariable": "%I2.3",
+    "nameVariable": "BOT ENGATE PINOM MANUAL",
+    "soft":false
+  },
+  {
+    "type": "I",
+    "addressVariable": "%I2.4",
+    "nameVariable": "BOT AV GIROM MANUAL",
+    "soft":false
+  },
+  {
+    "type": "I",
+    "addressVariable": "%I2.5",
+    "nameVariable": "BOT RET GIROM MANUAL",
+    "soft":false
+  },
+  {
+    "type": "I",
+    "addressVariable": "%I2.6",
+    "nameVariable": "BOT AV INJETOR1 MANUAL",
+    "soft":false
+  },
+  {
+    "type": "I",
+    "addressVariable": "%I2.7",
+    "nameVariable": "BOT RET INJETOR1 MANUAL",
+    "soft":false
+  },
+  {
+    "type": "I",
+    "addressVariable": "%I3.0",
+    "nameVariable": "BOT AV INJETOR2 MANUAL",
+    "soft":false
+  },
+  {
+    "type": "I",
+    "addressVariable": "%I3.1",
+    "nameVariable": "BOT RET INJETOR2 MANUAL",
+    "soft":false
+  },
+  {
+    "type": "I",
+    "addressVariable": "%I3.2",
+    "nameVariable": "BOT INJEC MANUAL INJETOR1",
+    "soft":false
+  },
+  {
+    "type": "I",
+    "addressVariable": "%I3.3",
+    "nameVariable": "BOT INJEC MANUAL INJETOR2",
+    "soft":false
+  },
+  {
+    "type": "I",
+    "addressVariable": "%I3.4",
+    "nameVariable": "SELET DOSAGEM INJET1",
+    "soft":false
+  },
+  {
+    "type": "I",
+    "addressVariable": "%I3.5",
+    "nameVariable": "SELET DOSAGEM INJET2",
+    "soft":false
+  },
+  {
+    "type": "I",
+    "addressVariable": "%I3.6",
+    "nameVariable": "SELET INJEC AUT INJET1",
+    "soft":false
+  },
+  {
+    "type": "I",
+    "addressVariable": "%I3.7",
+    "nameVariable": "SELET INJEC AUT INJET2",
+    "soft":false
+  },
+  {
+    "type": "I",
+    "addressVariable": "%I4.0",
+    "nameVariable": "",
+    "soft":false
+  },
+  {
+    "type": "I",
+    "addressVariable": "%I4.1",
+    "nameVariable": "",
+    "soft":false
+  },
+  {
+    "type": "I",
+    "addressVariable": "%I4.2",
+    "nameVariable": "",
+    "soft":false
+  },
+  {
+    "type": "I",
+    "addressVariable": "%I4.3",
+    "nameVariable": "",
+    "soft":false
+  },
+  {
+    "type": "I",
+    "addressVariable": "%I4.4",
+    "nameVariable": "",
+    "soft":false
+  },
+  {
+    "type": "I",
+    "addressVariable": "%I4.5",
+    "nameVariable": "",
+    "soft":false
+  },
+  {
+    "type": "I",
+    "addressVariable": "%I4.6",
+    "nameVariable": "RB EXTRATOR SOLAS REC",
+    "soft":false
+  },
+  {
+    "type": "I",
+    "addressVariable": "%I4.7",
+    "nameVariable": "PRESENCA 24VCC",
+    "soft":false
+  },
+  {
+    "type": "I",
+    "addressVariable": "%I5.0",
+    "nameVariable": "BOMBA LIGADA",
+    "soft":false
+  },
+  {
+    "type": "I",
+    "addressVariable": "%I5.1",
+    "nameVariable": "FEEDBACK CONTACTOR 24VCC",
+    "soft":false
+  },
+  {
+    "type": "I",
+    "addressVariable": "%I5.2",
+    "nameVariable": "",
+    "soft":false
+  },
+  {
+    "type": "I",
+    "addressVariable": "%I5.3",
+    "nameVariable": "",
+    "soft":false
+  },
+  {
+    "type": "I",
+    "addressVariable": "%I5.4",
+    "nameVariable": "",
+    "soft":false
+  },
+  {
+    "type": "I",
+    "addressVariable": "%I5.5",
+    "nameVariable": "BOTAO BI MANUAL MOVIMENTA MOLDE",
+    "soft":false
+  },
+  {
+    "type": "I",
+    "addressVariable": "%I5.6",
+    "nameVariable": "BOTAO MANUAL FECHA MOLDE",
+    "soft":false
+  },
+  {
+    "type": "I",
+    "addressVariable": "%I5.7",
+    "nameVariable": "BOTAO MANUAL ABRE MOLDE",
+    "soft":false
+  },
+  {
+    "type": "I",
+    "addressVariable": "%I6.0",
+    "nameVariable": "REINTE GRACAO CLP",
+    "soft":false
+  },
+  {
+    "type": "I",
+    "addressVariable": "%I6.1",
+    "nameVariable": "ABRE MOLDE MANUAL GRADE",
+    "soft":false
+  },
+  {
+    "type": "I",
+    "addressVariable": "%I6.2",
+    "nameVariable": "CHAVE AQUECI MENTO 1",
+    "soft":false
+  },
+  {
+    "type": "I",
+    "addressVariable": "%I6.3",
+    "nameVariable": "CHAVE AQUECI MENTO 2",
+    "soft":false
+  },
+  {
+    "type": "I",
+    "addressVariable": "%I6.4",
+    "nameVariable": "SENSOR RPM1",
+    "soft":false
+  },
+  {
+    "type": "I",
+    "addressVariable": "%I6.5",
+    "nameVariable": "SENSOR RPM2",
+    "soft":false
+  },
+  {
+    "type": "I",
+    "addressVariable": "%I6.6",
+    "nameVariable": "",
+    "soft":false
+  },
+  {
+    "type": "I",
+    "addressVariable": "%I6.7",
+    "nameVariable": "",
+    "soft":false
+  },
+  {
+    "type": "I",
+    "addressVariable": "%I7.0",
+    "nameVariable": "",
+    "soft":false
+  },
+  {
+    "type": "I",
+    "addressVariable": "%I7.1",
+    "nameVariable": "",
+    "soft":false
+  },
+  {
+    "type": "I",
+    "addressVariable": "%I7.2",
+    "nameVariable": "",
+    "soft":false
+  },
+  {
+    "type": "I",
+    "addressVariable": "%I7.3",
+    "nameVariable": "",
+    "soft":false
+  },
+  {
+    "type": "I",
+    "addressVariable": "%I7.4",
+    "nameVariable": "",
+    "soft":false
+  },
+  {
+    "type": "I",
+    "addressVariable": "%I7.5",
+    "nameVariable": "",
+    "soft":false
+  },
+  {
+    "type": "I",
+    "addressVariable": "%I7.6",
+    "nameVariable": "",
+    "soft":false
+  },
+  {
+    "type": "I",
+    "addressVariable": "%I7.7",
+    "nameVariable": "",
+    "soft":false
+  },
+  {
+    "type": "I",
+    "addressVariable": "%I8.0",
+    "nameVariable": "MOTIVO 1",
+    "soft":false
+  },
+  {
+    "type": "I",
+    "addressVariable": "%I8.1",
+    "nameVariable": "MOTIVO 2",
+    "soft":false
+  },
+  {
+    "type": "I",
+    "addressVariable": "%I8.2",
+    "nameVariable": "MOTIVO 3",
+    "soft":false
+  },
+  {
+    "type": "I",
+    "addressVariable": "%I8.3",
+    "nameVariable": "MOTIVO 4",
+    "soft":false
+  },
+  {
+    "type": "I",
+    "addressVariable": "%I8.4",
+    "nameVariable": "MOTIVO 5",
+    "soft":false
+  },
+  {
+    "type": "I",
+    "addressVariable": "%I8.5",
+    "nameVariable": "MOTIVO 6",
+    "soft":false
+  },
+  {
+    "type": "I",
+    "addressVariable": "%I8.6",
+    "nameVariable": "",
+    "soft":false
+  },
+  {
+    "type": "I",
+    "addressVariable": "%I8.7",
+    "nameVariable": "",
+    "soft":false
+  },
+  {
+    "type": "I",
+    "addressVariable": "%I9.0",
+    "nameVariable": "INJET 01",
+    "soft":false
+  },
+  {
+    "type": "I",
+    "addressVariable": "%I9.1",
+    "nameVariable": "INJET 02",
+    "soft":false
+  },
+  {
+    "type": "I",
+    "addressVariable": "%I9.2",
+    "nameVariable": "",
+    "soft":false
+  },
+  {
+    "type": "I",
+    "addressVariable": "%I9.3",
+    "nameVariable": "",
+    "soft":false
+  },
+  {
+    "type": "I",
+    "addressVariable": "%I9.4",
+    "nameVariable": "",
+    "soft":false
+  },
+  {
+    "type": "I",
+    "addressVariable": "%I9.5",
+    "nameVariable": "",
+    "soft":false
+  },
+  {
+    "type": "I",
+    "addressVariable": "%I9.6",
+    "nameVariable": "",
+    "soft":false
+  },
+  {
+    "type": "I",
+    "addressVariable": "%I9.7",
+    "nameVariable": "",
+    "soft":false
+  },
+  {
+    "type": "Q",
+    "addressVariable": "%Q0.0",
+    "nameVariable": "SIRENE",
+    "soft":false
+  },
+  {
+    "type": "Q",
+    "addressVariable": "%Q0.1",
+    "nameVariable": "LAMP LIBERA OPERACAO",
+    "soft":false
+  },
+  {
+    "type": "Q",
+    "addressVariable": "%Q0.2",
+    "nameVariable": "MOLDE ISOLADO MOTOMAN SIMON",
+    "soft":false
+  },
+  {
+    "type": "Q",
+    "addressVariable": "%Q0.3",
+    "nameVariable": "AR SUPERIOR",
+    "soft":false
+  },
+  {
+    "type": "Q",
+    "addressVariable": "%Q0.4",
+    "nameVariable": "AR INFERIOR",
+    "soft":false
+  },
+  {
+    "type": "Q",
+    "addressVariable": "%Q0.5",
+    "nameVariable": "2 VALVULA SUPERIOR",
+    "soft":false
+  },
+  {
+    "type": "Q",
+    "addressVariable": "%Q0.6",
+    "nameVariable": "2 VALVULA INFERIOR",
+    "soft":false
+  },
+  {
+    "type": "Q",
+    "addressVariable": "%Q0.7",
+    "nameVariable": "AVANCO EXTRATOR RABICHO",
+    "soft":false
+  },
+  {
+    "type": "Q",
+    "addressVariable": "%Q1.0",
+    "nameVariable": "GARRA EXTRATOR RABICHO",
+    "soft":false
+  },
+  {
+    "type": "Q",
+    "addressVariable": "%Q1.1",
+    "nameVariable": "LIBERA MOVIM EXTRATOR DE SOLAS",
+    "soft":false
+  },
+  {
+    "type": "Q",
+    "addressVariable": "%Q1.2",
+    "nameVariable": "S LAMP ERRO DOSAGEM 1",
+    "soft":false
+  },
+  {
+    "type": "Q",
+    "addressVariable": "%Q1.3",
+    "nameVariable": "S LAMP ERRO DOSAGEM 2",
+    "soft":false
+  },
+  {
+    "type": "Q",
+    "addressVariable": "%Q1.4",
+    "nameVariable": "S LAMP EMER GENCIA",
+    "soft":false
+  },
+  {
+    "type": "Q",
+    "addressVariable": "%Q1.5",
+    "nameVariable": "S LAMP GRADE INJETORES",
+    "soft":false
+  },
+  {
+    "type": "Q",
+    "addressVariable": "%Q1.6",
+    "nameVariable": "S LAMP GRADE TROCA MATRIZ",
+    "soft":false
+  },
+  {
+    "type": "Q",
+    "addressVariable": "%Q1.7",
+    "nameVariable": "S LAMP GRADE ROBOS",
+    "soft":false
+  },
+  {
+    "type": "Q",
+    "addressVariable": "%Q2.0",
+    "nameVariable": "S AVANCA GIRO MESA",
+    "soft":false
+  },
+  {
+    "type": "Q",
+    "addressVariable": "%Q2.1",
+    "nameVariable": "S RETORNA GIRO MESA",
+    "soft":false
+  },
+  {
+    "type": "Q",
+    "addressVariable": "%Q2.2",
+    "nameVariable": "S SAIDA PINO TRAVA GIRO M",
+    "soft":false
+  },
+  {
+    "type": "Q",
+    "addressVariable": "%Q2.3",
+    "nameVariable": "S ENTRADA PINO TRAVA GIRO M",
+    "soft":false
+  },
+  {
+    "type": "Q",
+    "addressVariable": "%Q2.4",
+    "nameVariable": "S AVANCO INJETOR1",
+    "soft":false
+  },
+  {
+    "type": "Q",
+    "addressVariable": "%Q2.5",
+    "nameVariable": "S RETORNO INJETOR1",
+    "soft":false
+  },
+  {
+    "type": "Q",
+    "addressVariable": "%Q2.6",
+    "nameVariable": "S AVANCO INJETOR2",
+    "soft":false
+  },
+  {
+    "type": "Q",
+    "addressVariable": "%Q2.7",
+    "nameVariable": "S RETORNO INJETOR2",
+    "soft":false
+  },
+  {
+    "type": "Q",
+    "addressVariable": "%Q3.0",
+    "nameVariable": "S PRENSA",
+    "soft":false
+  },
+  {
+    "type": "Q",
+    "addressVariable": "%Q3.1",
+    "nameVariable": "S CUNHA",
+    "soft":false
+  },
+  {
+    "type": "Q",
+    "addressVariable": "%Q3.2",
+    "nameVariable": "S DOSAGEM INJETOR1",
+    "soft":false
+  },
+  {
+    "type": "Q",
+    "addressVariable": "%Q3.3",
+    "nameVariable": "S DOSAGEM INJETOR2",
+    "soft":false
+  },
+  {
+    "type": "Q",
+    "addressVariable": "%Q3.4",
+    "nameVariable": "S AGUA GELADA",
+    "soft":false
+  },
+  {
+    "type": "Q",
+    "addressVariable": "%Q3.5",
+    "nameVariable": "LAMPADA MESA EM AUTOMATICO",
+    "soft":false
+  },
+  {
+    "type": "Q",
+    "addressVariable": "%Q3.6",
+    "nameVariable": "S COMANDO INJEC INJ1",
+    "soft":false
+  },
+  {
+    "type": "Q",
+    "addressVariable": "%Q3.7",
+    "nameVariable": "S COMANDO INJEC INJ2",
+    "soft":false
+  },
+  {
+    "type": "Q",
+    "addressVariable": "%Q4.0",
+    "nameVariable": "S AQUECIM Z1 INJ1",
+    "soft":false
+  },
+  {
+    "type": "Q",
+    "addressVariable": "%Q4.1",
+    "nameVariable": "S AQUECIM Z2 INJ1",
+    "soft":false
+  },
+  {
+    "type": "Q",
+    "addressVariable": "%Q4.2",
+    "nameVariable": "S AQUECIM Z3 INJ1",
+    "soft":false
+  },
+  {
+    "type": "Q",
+    "addressVariable": "%Q4.3",
+    "nameVariable": "S SINALIZ DOSAGEM LIB1",
+    "soft":false
+  },
+  {
+    "type": "Q",
+    "addressVariable": "%Q4.4",
+    "nameVariable": "S AQUECIM BICO INJ1",
+    "soft":false
+  },
+  {
+    "type": "Q",
+    "addressVariable": "%Q4.5",
+    "nameVariable": "S AQUECIM Z1 INJ2",
+    "soft":false
+  },
+  {
+    "type": "Q",
+    "addressVariable": "%Q4.6",
+    "nameVariable": "S AQUECIM Z2 INJ2",
+    "soft":false
+  },
+  {
+    "type": "Q",
+    "addressVariable": "%Q4.7",
+    "nameVariable": "S AQUECIM Z3 INJ2",
+    "soft":false
+  },
+  {
+    "type": "Q",
+    "addressVariable": "%Q5.0",
+    "nameVariable": "S SINALIZ DOSAGEM LIB2",
+    "soft":false
+  },
+  {
+    "type": "Q",
+    "addressVariable": "%Q5.1",
+    "nameVariable": "S AQUECIM BICO INJ2",
+    "soft":false
+  },
+  {
+    "type": "Q",
+    "addressVariable": "%Q5.2",
+    "nameVariable": "S VENTIL Z2 INJ1",
+    "soft":false
+  },
+  {
+    "type": "Q",
+    "addressVariable": "%Q5.3",
+    "nameVariable": "S VENTIL Z3 INJ1",
+    "soft":false
+  },
+  {
+    "type": "Q",
+    "addressVariable": "%Q5.4",
+    "nameVariable": "S VENTIL Z4 INJ1",
+    "soft":false
+  },
+  {
+    "type": "Q",
+    "addressVariable": "%Q5.5",
+    "nameVariable": "S VENTIL Z2 INJ2",
+    "soft":false
+  },
+  {
+    "type": "Q",
+    "addressVariable": "%Q5.6",
+    "nameVariable": "S VENTIL Z3 INJ2",
+    "soft":false
+  },
+  {
+    "type": "Q",
+    "addressVariable": "%Q5.7",
+    "nameVariable": "S VENTIL Z4 INJ2",
+    "soft":false
+  },
+  {
+    "type": "IW",
+    "WRD": true,
+    "addressVariable": "%IW30",
+    "nameVariable": "TERMOPAR Z1 INJ1",
+    "soft":false,
+    "initScala": "-0",
+    "endScala": "-100"
+  },
+  {
+    "type": "IW",
+    "WRD": true,
+    "addressVariable": "%IW32",
+    "nameVariable": "TERMOPAR Z2 INJ1",
+    "soft":false,
+    "initScala": "-0",
+    "endScala": "-100"
+  },
+  {
+    "type": "IW",
+    "WRD": true,
+    "addressVariable": "%IW34",
+    "nameVariable": "TERMOPAR Z3 INJ1",
+    "soft":false,
+    "initScala": "-0",
+    "endScala": "-155"
+  },
+  {
+    "type": "IW",
+    "WRD": true,
+    "addressVariable": "%IW36",
+    "nameVariable": "TERMOPAR Z4 INJ1",
+    "soft":false,
+    "initScala": "-0",
+    "endScala": "-100"
+  },
+  {
+    "type": "IW",
+    "WRD": true,
+    "addressVariable": "%IW38",
+    "nameVariable": "TERMOPAR Z1 INJ2",
+    "soft":false,
+    "initScala": "-0",
+    "endScala": "-100"
+  },
+  {
+    "type": "IW",
+    "WRD": true,
+    "addressVariable": "%IW40",
+    "nameVariable": "TERMOPAR Z2 INJ2",
+    "soft":false,
+    "initScala": "-0",
+    "endScala": "-100"
+  },
+  {
+    "type": "IW",
+    "WRD": true,
+    "addressVariable": "%IW42",
+    "nameVariable": "TERMOPAR Z3 INJ2",
+    "soft":false,
+    "initScala": "-0",
+    "endScala": "-100"
+  },
+  {
+    "type": "IW",
+    "WRD": true,
+    "addressVariable": "%IW44",
+    "nameVariable": "TERMOPAR Z4 INJ2",
+    "soft":false,
+    "initScala": "-0",
+    "endScala": "-100"
+  },
+  {
+    "type": "IW",
+    "WRD": true,
+    "addressVariable": "%IW56",
+    "nameVariable": "REGUA DOSAGEM INJET 1",
+    "soft":false,
+    "initScala": "-0",
+    "endScala": "-100"
+  },
+  {
+    "type": "IW",
+    "WRD": true,
+    "addressVariable": "%IW58",
+    "nameVariable": "REGUA DOSAGEM INJET 2",
+    "soft":false,
+    "initScala": "-0",
+    "endScala": "-100"
+  },
+  {
+    "type": "IW",
+    "WRD": true,
+    "addressVariable": "%IW60",
+    "nameVariable": "TRANSDUTOR DE PRESS1",
+    "soft":false,
+    "initScala": "-0",
+    "endScala": "-100"
+  },
+  {
+    "type": "IW",
+    "WRD": true,
+    "addressVariable": "%IW62",
+    "nameVariable": "TRANSDUTOR DE PRESS2",
+    "soft":false,
+    "initScala": "-0",
+    "endScala": "-100"
+  },
+  {
+    "type": "QW",
+    "WRD": true,
+    "addressVariable": "%QW6",
+    "nameVariable": "PROPORCIONAL INJ1",
+    "soft":false,
+    "initScala": "-0",
+    "endScala": "-100"
+  },
+  {
+    "type": "QW",
+    "WRD": true,
+    "addressVariable": "%QW8",
+    "nameVariable": "PROPORCIONAL INJ2",
+    "soft":false,
+    "initScala": "-0",
+    "endScala": "-100"
+  },
+  {
+    "type": "QW",
+    "WRD": true,
+    "addressVariable": "%QW10",
+    "nameVariable": "",
+    "soft":false
+  },
+  {
+    "type": "QW",
+    "WRD": true,
+    "addressVariable": "%QW12",
+    "nameVariable": "",
+    "soft":false
+  },
+  {
+    "type": "S",
+    "addressVariable": "%I64.0",
+    "nameVariable": "SEG GRADES 1",
+    "soft": true
+  },
+  {
+    "type": "S",
+    "addressVariable": "%I64.1",
+    "nameVariable": "SEG GRADES 2",
+    "soft": true
+  },
+  {
+    "type": "S",
+    "addressVariable": "%I64.2",
+    "nameVariable": "SEG GRADES 3",
+    "soft": true
+  },
+  {
+    "type": "S",
+    "addressVariable": "%I64.3",
+    "nameVariable": "SEG GRADES 4",
+    "soft": true
+  },
+  {
+    "type": "S",
+    "addressVariable": "%I64.4",
+    "nameVariable": "SEG GRADES 1(1)",
+    "soft": true
+  },
+  {
+    "type": "S",
+    "addressVariable": "%I64.5",
+    "nameVariable": "SEG GRADES 2(1)",
+    "soft": true
+  },
+  {
+    "type": "S",
+    "addressVariable": "%I64.6",
+    "nameVariable": "SEG GRADES 3(1)",
+    "soft": true
+  },
+  {
+    "type": "S",
+    "addressVariable": "%I64.7",
+    "nameVariable": "SEG GRADES 4(1)",
+    "soft": true
+  },
+  {
+    "type": "S",
+    "addressVariable": "%I65.0",
+    "nameVariable": "",
+    "soft": true
+  },
+  {
+    "type": "S",
+    "addressVariable": "%I65.1",
+    "nameVariable": "",
+    "soft": true
+  },
+  {
+    "type": "S",
+    "addressVariable": "%I65.2",
+    "nameVariable": "",
+    "soft": true
+  },
+  {
+    "type": "S",
+    "addressVariable": "%I65.3",
+    "nameVariable": "",
+    "soft": true
+  },
+  {
+    "type": "S",
+    "addressVariable": "%I65.4",
+    "nameVariable": "",
+    "soft": true
+  },
+  {
+    "type": "S",
+    "addressVariable": "%I65.5",
+    "nameVariable": "",
+    "soft": true
+  },
+  {
+    "type": "S",
+    "addressVariable": "%I65.6",
+    "nameVariable": "",
+    "soft": true
+  },
+  {
+    "type": "S",
+    "addressVariable": "%I65.7",
+    "nameVariable": "",
+    "soft": true
+  },
+  {
+    "type": "S",
+    "addressVariable": "%I70.0",
+    "nameVariable": "SEG GRADES 5",
+    "soft": true
+  },
+  {
+    "type": "S",
+    "addressVariable": "%I70.1",
+    "nameVariable": "EMERGEN CIAS(1)",
+    "soft": true
+  },
+  {
+    "type": "S",
+    "addressVariable": "%I70.2",
+    "nameVariable": "CORTINA ZONA FECH MOLDE",
+    "soft": true
+  },
+  {
+    "type": "S",
+    "addressVariable": "%I70.3",
+    "nameVariable": "LIVRE",
+    "soft": true
+  },
+  {
+    "type": "S",
+    "addressVariable": "%I70.4",
+    "nameVariable": "SEG GRADES 5(1)",
+    "soft": true
+  },
+  {
+    "type": "S",
+    "addressVariable": "%I70.5",
+    "nameVariable": "EMERGEN CIAS(2)",
+    "soft": true
+  },
+  {
+    "type": "S",
+    "addressVariable": "%I70.6",
+    "nameVariable": "CORTINA ZONA FECH MOLDE(1)",
+    "soft": true
+  },
+  {
+    "type": "S",
+    "addressVariable": "%I70.7",
+    "nameVariable": "LIVRE(1)",
+    "soft": true
+  },
+  {
+    "type": "S",
+    "addressVariable": "%I71.0",
+    "nameVariable": "",
+    "soft": true
+  },
+  {
+    "type": "S",
+    "addressVariable": "%I71.1",
+    "nameVariable": "",
+    "soft": true
+  },
+  {
+    "type": "S",
+    "addressVariable": "%I71.2",
+    "nameVariable": "",
+    "soft": true
+  },
+  {
+    "type": "S",
+    "addressVariable": "%I71.3",
+    "nameVariable": "",
+    "soft": true
+  },
+  {
+    "type": "S",
+    "addressVariable": "%I71.4",
+    "nameVariable": "",
+    "soft": true
+  },
+  {
+    "type": "S",
+    "addressVariable": "%I71.5",
+    "nameVariable": "",
+    "soft": true
+  },
+  {
+    "type": "S",
+    "addressVariable": "%I71.6",
+    "nameVariable": "",
+    "soft": true
+  },
+  {
+    "type": "S",
+    "addressVariable": "%I71.7",
+    "nameVariable": "",
+    "soft": true
+  },
+  {
+    "type": "I",
+    "addressVariable": "%I10.0",
+    "nameVariable": "RESET GRADES INJETORES CUNHA(2)",
+    "soft":false
+  },
+  {
+    "type": "I",
+    "addressVariable": "%I10.1",
+    "nameVariable": "RESET EMER GENCIA BOMBA Z4VCC",
+    "soft":false
+  },
+  {
+    "type": "I",
+    "addressVariable": "%I10.2",
+    "nameVariable": "RESET GRADES TROCA DE MATRIZ",
+    "soft":false
+  },
+  {
+    "type": "I",
+    "addressVariable": "%I10.3",
+    "nameVariable": "RESET GRADES ROBO SACA RABICHO",
+    "soft":false
+  },
+  {
+    "type": "I",
+    "addressVariable": "%I10.4",
+    "nameVariable": "",
+    "soft":false
+  },
+  {
+    "type": "I",
+    "addressVariable": "%I10.5",
+    "nameVariable": "",
+    "soft":false
+  },
+  {
+    "type": "I",
+    "addressVariable": "%I10.6",
+    "nameVariable": "",
+    "soft":false
+  },
+  {
+    "type": "I",
+    "addressVariable": "%I10.7",
+    "nameVariable": "",
+    "soft":false
+  },
+  {
+    "type": "I",
+    "addressVariable": "%I11.0",
+    "nameVariable": "",
+    "soft":false
+  },
+  {
+    "type": "I",
+    "addressVariable": "%I11.1",
+    "nameVariable": "",
+    "soft":false
+  },
+  {
+    "type": "I",
+    "addressVariable": "%I11.2",
+    "nameVariable": "",
+    "soft":false
+  },
+  {
+    "type": "I",
+    "addressVariable": "%I11.3",
+    "nameVariable": "",
+    "soft":false
+  },
+  {
+    "type": "I",
+    "addressVariable": "%I11.4",
+    "nameVariable": "",
+    "soft":false
+  },
+  {
+    "type": "I",
+    "addressVariable": "%I11.5",
+    "nameVariable": "",
+    "soft":false
+  },
+  {
+    "type": "I",
+    "addressVariable": "%I11.6",
+    "nameVariable": "",
+    "soft":false
+  },
+  {
+    "type": "I",
+    "addressVariable": "%I11.7",
+    "nameVariable": "",
+    "soft":false
+  },
+  {
+    "type": "S",
+    "addressVariable": "%Q82.0",
+    "nameVariable": "Q SEG 24VCC SAIDAS E MESA RS2",
+    "soft": true
+  },
+  {
+    "type": "S",
+    "addressVariable": "%Q82.1",
+    "nameVariable": "Q SEG EMERG BOMBA HID RS40",
+    "soft": true
+  },
+  {
+    "type": "S",
+    "addressVariable": "%Q82.2",
+    "nameVariable": "Q SEG INJETORES CUNHA PRENSAS RS30",
+    "soft": true
+  },
+  {
+    "type": "S",
+    "addressVariable": "%Q82.3",
+    "nameVariable": "Q SEG ROBOS SOLA RABICHO RS20",
+    "soft": true
+  },
+  {
+    "type": "S",
+    "addressVariable": "%I82.0",
+    "nameVariable": "",
+    "soft": true
+  },
+  {
+    "type": "S",
+    "addressVariable": "%I82.1",
+    "nameVariable": "",
+    "soft": true
+  },
+  {
+    "type": "S",
+    "addressVariable": "%I82.2",
+    "nameVariable": "",
+    "soft": true
+  },
+  {
+    "type": "S",
+    "addressVariable": "%I82.3",
+    "nameVariable": "",
+    "soft": true
+  },
+  {
+    "type": "S",
+    "addressVariable": "%Q87.0",
+    "nameVariable": "Q SEG 24VCC MESA +G RS5",
+    "soft": true
+  },
+  {
+    "type": "S",
+    "addressVariable": "%Q87.1",
+    "nameVariable": "Q SEG DOSAGEM DESLIGA BOMBA",
+    "soft": true
+  },
+  {
+    "type": "S",
+    "addressVariable": "%Q87.2",
+    "nameVariable": "Q RELE SEG GIRO MESA",
+    "soft": true
+  },
+  {
+    "type": "S",
+    "addressVariable": "%Q87.3",
+    "nameVariable": "Q RELE SEG AQUE CIMENTO VENTILAC",
+    "soft": true
+  },
+  {
+    "type": "S",
+    "addressVariable": "%I87.0",
+    "nameVariable": "",
+    "soft": true
+  },
+  {
+    "type": "S",
+    "addressVariable": "%I87.1",
+    "nameVariable": "",
+    "soft": true
+  },
+  {
+    "type": "S",
+    "addressVariable": "%I87.2",
+    "nameVariable": "",
+    "soft": true
+  },
+  {
+    "type": "S",
+    "addressVariable": "%I87.3",
+    "nameVariable": "",
+    "soft": true
+  },
+  {
+    "type": "IW",
+    "WRD": true,
+    "addressVariable": "%IW92",
+    "nameVariable": "TRANSDUTOR PRESSAO AR DE INJEC",
+    "soft":false,
+    "initScala": "-0",
+    "endScala": "-100"
+  },
+  {
+    "type": "IW",
+    "WRD": true,
+    "addressVariable": "%IW94",
+    "nameVariable": "",
+    "soft":false
+  },
+  {
+    "type": "IW",
+    "WRD": true,
+    "addressVariable": "%IW96",
+    "nameVariable": "",
+    "soft":false
+  },
+  {
+    "type": "IW",
+    "WRD": true,
+    "addressVariable": "%IW98",
+    "nameVariable": "",
+    "soft":false
+  }
+]
